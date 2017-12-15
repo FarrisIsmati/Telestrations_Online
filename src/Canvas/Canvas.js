@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+// Tutorial http://www.williammalone.com/articles/create-html5-canvas-javascript-drawing-app/#demo-simple
 class Canvas extends Component {
   constructor(props){
     super(props)
@@ -15,29 +16,30 @@ class Canvas extends Component {
     this.addClick       = this.addClick.bind(this)
     this.onMouseMove    = this.onMouseMove.bind(this)
     this.onMouseLeave   = this.onMouseLeave.bind(this)
-    // this.redraw = this.redraw.bind(this)
+    this.redraw = this.redraw.bind(this)
   }
 
-  // redraw(canvas){
-  //   let context = canvas.getContext("2d");
-  //   context.clearRect(0, 0, context.canvas.width, context.canvas.height)
-  //
-  //   context.strokeStyle = "#df4b26"
-  //   context.lineJoin = "round"
-  //   context.lineWidth = 5
-  //
-  //   for(var i=0; i < clickX.length; i++) {
-  //     context.beginPath()
-  //     if(clickDrag[i] && i){
-  //       context.moveTo(clickX[i-1], clickY[i-1])
-  //      }else{
-  //        context.moveTo(clickX[i]-1, clickY[i])
-  //      }
-  //      context.lineTo(clickX[i], clickY[i])
-  //      context.closePath()
-  //      context.stroke()
-  //   }
-  // }
+  // Sets up Canvas and handles drawing based on state of mouse position
+  redraw(canvas){
+    let context = canvas.getContext("2d");
+    context.clearRect(0, 0, context.canvas.width, context.canvas.height)
+
+    context.strokeStyle = "#df4b26"
+    context.lineJoin = "round"
+    context.lineWidth = 5
+
+    for(let i = 0; i < this.state.clickX.length; i++) {
+      context.beginPath()
+      if(this.state.clickDrag[i] && i){
+        context.moveTo(this.state.clickX[i-1], this.state.clickY[i-1])
+       }else{
+         context.moveTo(this.state.clickX[i]-1, this.state.clickY[i])
+       }
+       context.lineTo(this.state.clickX[i], this.state.clickY[i])
+       context.closePath()
+       context.stroke()
+    }
+  }
 
   addClick(x, y, dragging) {
     this.setState({ clickX: this.state.clickX.concat([x]) })
@@ -46,27 +48,24 @@ class Canvas extends Component {
   }
 
   onMouseDown(e, canvas) {
-    // let mouseX = e.pageX - canvas.offsetLeft
-    // let mouseY = e.pageY - canvas.offsetTop
     this.setState({ paint: true })
     this.addClick(e.pageX - canvas.offsetLeft, e.pageY - canvas.offsetTop)
-    //redraw(canvas)
-  }
-
-  onMouseClick(){
-    if (this.state.paint){
-      this.setState({ paint: false })
-      console.log(this.state)
-    } else {
-      this.setState({ paint: true })
-    }
+    this.redraw(canvas)
   }
 
   onMouseMove(e, canvas) {
     if(this.state.paint){
       this.addClick(e.pageX - canvas.offsetLeft, e.pageY - canvas.offsetTop, true)
-      console.log(this.state)
-      //redraw();
+      this.redraw(canvas)
+    }
+  }
+
+  onMouseClick(e, canvas){
+    if (this.state.paint){
+      this.setState({ paint: false })
+      this.redraw(canvas)
+    } else {
+      this.setState({ paint: true })
     }
   }
 
@@ -81,7 +80,7 @@ class Canvas extends Component {
         <canvas ref='canvas'
           onMouseDown={(e) => this.onMouseDown(e, e.target)}
           onMouseMove={(e) => this.onMouseMove(e, e.target)}
-          onClick={(e) => this.onMouseClick()}
+          onClick={(e) => this.onMouseClick(e, e.target)}
           onMouseLeave={(e) => this.onMouseLeave()}
           width='490' height='220'></canvas>
       </div>
