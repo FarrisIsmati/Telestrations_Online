@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
 
-//Components
-
-
 class Game extends Component {
   render () {
     return (

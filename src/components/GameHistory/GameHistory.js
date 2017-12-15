@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 class GameHistory extends Component{
-
 render() {
   return(
     <div>
@@ -12,4 +11,4 @@ render() {
 }
 
 
-export default GameHistory;
+export default GameHistory
