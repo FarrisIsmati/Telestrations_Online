@@ -17,7 +17,8 @@ class Canvas extends Component {
     this.addClick       = this.addClick.bind(this)
     this.onMouseMove    = this.onMouseMove.bind(this)
     this.onMouseLeave   = this.onMouseLeave.bind(this)
-    this.redraw = this.redraw.bind(this)
+    this.redraw         = this.redraw.bind(this)
+    this.onSave         = this.onSave.bind(this)
   }
 
   // Sets up Canvas and handles drawing based on state of mouse position
@@ -63,6 +64,7 @@ class Canvas extends Component {
   }
 
   onMouseClick(e, canvas){
+    this.setState({canvas: canvas})
     if (this.state.paint){
       this.setState({ paint: false })
       this.redraw(canvas)
@@ -73,6 +75,11 @@ class Canvas extends Component {
 
   onMouseLeave(e){
     this.setState({paint: false})
+  }
+
+  // Save image as base64
+  onSave(e){
+    let image = this.state.canvas.toDataURL()
   }
 
   render() {
@@ -87,12 +94,14 @@ class Canvas extends Component {
     }
 
     return (
-      <canvas ref='canvas' style={canvasBorderStyle}
-        onMouseDown={(e) => this.onMouseDown(e, e.target)}
-        onMouseMove={(e) => this.onMouseMove(e, e.target)}
-        onClick={(e) => this.onMouseClick(e, e.target)}
-        onMouseLeave={(e) => this.onMouseLeave()}
-        width={width} height={height} />
+      <div>
+        <canvas ref='canvas' style={canvasBorderStyle}
+          onMouseDown={(e) => this.onMouseDown(e, e.target)}
+          onMouseMove={(e) => this.onMouseMove(e, e.target)}
+          onClick={(e) => this.onMouseClick(e, e.target)}
+          onMouseLeave={(e) => this.onMouseLeave()}
+          width={width} height={height} />
+      </div>
     )
   }
 }
