@@ -11,8 +11,10 @@ class Canvas extends Component {
       paint: false
     }
 
-    this.onMouseDown = this.onMouseDown.bind(this)
-    this.addClick = this.addClick.bind(this)
+    this.onMouseDown    = this.onMouseDown.bind(this)
+    this.addClick       = this.addClick.bind(this)
+    this.onMouseMove    = this.onMouseMove.bind(this)
+    this.onMouseLeave   = this.onMouseLeave.bind(this)
     // this.redraw = this.redraw.bind(this)
   }
 
@@ -43,8 +45,7 @@ class Canvas extends Component {
     this.setState({ clickDrag: this.state.clickDrag.concat([dragging]) })
   }
 
-  onMouseDown(e) {
-    let canvas = e.target
+  onMouseDown(e, canvas) {
     // let mouseX = e.pageX - canvas.offsetLeft
     // let mouseY = e.pageY - canvas.offsetTop
     this.setState({ paint: true })
@@ -52,13 +53,36 @@ class Canvas extends Component {
     //redraw(canvas)
   }
 
+  onMouseClick(){
+    if (this.state.paint){
+      this.setState({ paint: false })
+      console.log(this.state)
+    } else {
+      this.setState({ paint: true })
+    }
+  }
+
+  onMouseMove(e, canvas) {
+    if(this.state.paint){
+      this.addClick(e.pageX - canvas.offsetLeft, e.pageY - canvas.offsetTop, true)
+      console.log(this.state)
+      //redraw();
+    }
+  }
+
+  onMouseLeave(e){
+    this.setState({paint: false})
+  }
+
   render() {
     return (
       <div className='Canvas'>
         <p>Im a canvas</p>
         <canvas ref='canvas'
-          onMouseDown={(e) => this.onMouseDown(e)}
-          onMouseMove={(e) => this.onMouseMove(e)}
+          onMouseDown={(e) => this.onMouseDown(e, e.target)}
+          onMouseMove={(e) => this.onMouseMove(e, e.target)}
+          onClick={(e) => this.onMouseClick()}
+          onMouseLeave={(e) => this.onMouseLeave()}
           width='490' height='220'></canvas>
       </div>
     );
