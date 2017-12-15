@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 // Tutorial http://www.williammalone.com/articles/create-html5-canvas-javascript-drawing-app/#demo-simple
 class Canvas extends Component {
@@ -30,9 +31,9 @@ class Canvas extends Component {
 
     for(let i = 0; i < this.state.clickX.length; i++) {
       context.beginPath()
-      if(this.state.clickDrag[i] && i){
+      if (this.state.clickDrag[i] && i) {
         context.moveTo(this.state.clickX[i-1], this.state.clickY[i-1])
-       }else{
+       } else {
          context.moveTo(this.state.clickX[i]-1, this.state.clickY[i])
        }
        context.lineTo(this.state.clickX[i], this.state.clickY[i])
@@ -41,6 +42,7 @@ class Canvas extends Component {
     }
   }
 
+  // Sets state of mouse position
   addClick(x, y, dragging) {
     this.setState({ clickX: this.state.clickX.concat([x]) })
     this.setState({ clickY: this.state.clickY.concat([y]) })
@@ -74,18 +76,37 @@ class Canvas extends Component {
   }
 
   render() {
+    const {
+      width,
+      height,
+      borderWidth
+    } = this.props
+
+    const canvasBorderStyle = {
+      border: `${borderWidth} solid rgb(0,0,0)`
+    }
+
     return (
-      <div className='Canvas'>
-        <p>Im a canvas</p>
-        <canvas ref='canvas'
-          onMouseDown={(e) => this.onMouseDown(e, e.target)}
-          onMouseMove={(e) => this.onMouseMove(e, e.target)}
-          onClick={(e) => this.onMouseClick(e, e.target)}
-          onMouseLeave={(e) => this.onMouseLeave()}
-          width='490' height='220'></canvas>
-      </div>
-    );
+      <canvas ref='canvas' style={canvasBorderStyle}
+        onMouseDown={(e) => this.onMouseDown(e, e.target)}
+        onMouseMove={(e) => this.onMouseMove(e, e.target)}
+        onClick={(e) => this.onMouseClick(e, e.target)}
+        onMouseLeave={(e) => this.onMouseLeave()}
+        width={width} height={height} />
+    )
   }
+}
+
+Canvas.propTypes = {
+  width: PropTypes.string,
+  height: PropTypes.string,
+  borderWidth: PropTypes.string
+}
+
+Canvas.defaultProps = {
+  width: '400px',
+  height: '250px',
+  borderWidth: '1px'
 }
 
 export default Canvas;
