@@ -19,7 +19,6 @@ class Guess extends Component {
       .then((response) => {
           this.setState({...response.data})
           this.setState({loaded: true})
-          console.log(this.state.history[0].drawing)
         })
       .catch((err) => console.log(err))
   }
@@ -41,12 +40,19 @@ class Guess extends Component {
   }
 
   render() {
+    //Find height width of image and set it to that
+    const tempImgStyle = {
+      width: '100%',
+      height: '100%',
+      backgroundColor: '#E24E24'
+    }
     return (
       <div>
         {
-          this.state.loaded ?
-        <img src={this.state.history[0].drawing}/>:
-        <p>loading</p>}
+          this.state.loaded && this.state.history.length >= 1 ?
+          <img src={this.state.history[this.state.guesses - 1].drawing}/>:
+          <div style={tempImgStyle}></div>
+        }
         <div className='input-holder'>
           <p onClick={this.onSave}>Next</p>
         </div>

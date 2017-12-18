@@ -35,6 +35,8 @@ class Canvas extends Component {
     context.clearRect(0, 0, context.canvas.width, context.canvas.height)
     context.lineJoin = "round"
     context.lineWidth = 10
+    context.fillStyle = '#E24E24';
+    context.fillRect(0, 0, canvas.width, canvas.height)
 
     for(let i = 0; i < this.state.clickX.length; i++) {
       context.beginPath()
@@ -110,11 +112,13 @@ class Canvas extends Component {
       canvasWidth: this.refs.canvasHolder.offsetWidth,
       canvasHeight: this.refs.canvasHolder.offsetHeight
     })
-    window.addEventListener("resize", this.resizeCanvas)
+
+    //window.addEventListener("resize", this.resizeCanvas)
   }
 
   componentDidUpdate() {
     this.redraw(this.state.canvas)
+    console.log(this.props.guesses)
   }
 
   render() {
@@ -142,7 +146,8 @@ class Canvas extends Component {
           onMouseMove={(e) => this.onMouseMove(e, e.target)}
           onClick={(e) => this.onMouseClick(e, e.target)}
           onMouseLeave={(e) => this.onMouseLeave()}
-          width={this.state.canvasWidth} height={height} />
+          width={this.state.canvasWidth} height={height}
+          />
         <div>
           {children}
           <p onClick={this.onSave}>Next</p>

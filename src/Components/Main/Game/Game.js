@@ -57,8 +57,8 @@ class Game extends Component {
   }
 
   render () {
-    const canvasPlay = <Canvas {...this.props} requestdata={this.getGameData} height='500px'/>
-    const canvasStart = <Canvas {...this.props} startgame={this.startGame} requestdata={this.getGameData} height='500px'>
+    const canvasPlay = <Canvas {...this.props} guesses={this.state.guesses} requestdata={this.getGameData} height='500px'/>
+    const canvasStart = <Canvas {...this.props} guesses={this.state.guesses} startgame={this.startGame} requestdata={this.getGameData} height='500px'>
       <p>START</p>
     </Canvas>
 
