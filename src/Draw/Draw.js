@@ -8,7 +8,7 @@ class Draw extends Component {
     return (
       <div>
         <Canvas width="600px" height="400px"/>
-        <div className="input-holder">
+        <div className="input-holder  ">
 
         </div>
       </div>
