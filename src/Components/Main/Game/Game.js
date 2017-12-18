@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import axios                from 'axios'
-import DrawStart from                  '../../SubComponents/Draw/DrawStart'
-import DrawPlay from                  '../../SubComponents/Draw/DrawPlay'
+import Canvas                 from '../../SubComponents/Canvas/Canvas'
 
 import                            '../../../Stylesheets/CommonStyles.css'
 import                            './Game.css'
@@ -14,6 +13,7 @@ class Game extends Component {
         started: false,
     }
 
+    this.startGame = this.startGame.bind(this)
     this.getGameData = this.getGameData.bind(this)
   }
 
@@ -25,21 +25,32 @@ class Game extends Component {
       .catch((err) => console.log(err))
   }
 
+  startGame() {
+    this.setState({
+      started: true
+    })
+  }
+
   componentDidMount() {
     this.getGameData()
   }
 
   componentDidUpdate() {
-    console.log(this.state)
+
   }
 
   render () {
     return (
       <div className='game-holder flex flex-column'>
+
+
         {this.state.started ?
-          <DrawPlay /> :
-          <DrawStart />
+          <Canvas /> :
+          <Canvas height='500px'>
+          </Canvas>
         }
+
+
       </div>
     )
   }

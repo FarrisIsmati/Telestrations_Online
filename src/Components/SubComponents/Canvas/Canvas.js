@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes            from 'prop-types'
-import ColorPicker          from './ColorPicker'
 
 //CSS
 import                           './Canvas.css'
@@ -135,7 +134,7 @@ class Canvas extends Component {
     }
 
     return (
-      <div className="flex canvas-holder" ref="canvasHolder">
+      <div className="flex flex-column canvas-holder" ref="canvasHolder">
         <canvas className="canvas" ref='canvas' style={canvasStyle}
           onMouseDown={(e) => this.onMouseDown(e, e.target)}
           onMouseMove={(e) => this.onMouseMove(e, e.target)}

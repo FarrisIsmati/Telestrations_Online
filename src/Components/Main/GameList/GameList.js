@@ -10,7 +10,9 @@ class GameList extends Component{
   }
 
   createGame() {
-    axios.post('http://localhost:3001/api/game')
+    axios.post('http://localhost:3001/api/game', {
+        'player': 6
+      })
       .then((response) => {
           this.props.history.push(`/${response.data._id}`)
         })
