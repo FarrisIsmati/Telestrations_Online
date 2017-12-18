@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes            from 'prop-types'
+import axios                from 'axios'
 
 //CSS
 import                           './Canvas.css'
@@ -100,7 +101,14 @@ class Canvas extends Component {
   // Save image as base64
   onSave(){
     let image = this.state.canvas.toDataURL()
-    console.log(image)
+    axios.post(`http://localhost:3001/api/game/${this.props.match.params.gameId}/history`, {
+        'drawing': image
+      })
+      .then((response) => {
+        console.log('run request')
+        this.props.requestdata()
+      })
+      .catch((err) => console.log(err))
   }
 
   componentDidMount() {

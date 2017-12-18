@@ -31,12 +31,16 @@ class Game extends Component {
     })
   }
 
+  request() {
+    this.forceUpdate()
+  }
+
   componentDidMount() {
     this.getGameData()
   }
 
   componentDidUpdate() {
-
+    console.log(this.state)
   }
 
   render () {
@@ -45,8 +49,8 @@ class Game extends Component {
 
 
         {this.state.started ?
-          <Canvas /> :
-          <Canvas height='500px'>
+          <Canvas {...this.props} requestdata={this.getGameData} height='500px'/> :
+          <Canvas {...this.props} requestdata={this.getGameData} height='500px'>
           </Canvas>
         }
 
