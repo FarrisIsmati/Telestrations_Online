@@ -1,5 +1,5 @@
 import React, { Component } from                'react'
-import { Route, Link, Redirect, Switch } from   'react-router-dom'
+import { Route, Redirect, Switch } from   'react-router-dom'
 
 //Imports
 import Game from                                './Components/Main/Game/Game'
@@ -19,8 +19,8 @@ class App extends Component {
               <Route path='/about' render={(props) => (
                <p>Render about page here</p>)}/>
 
-               <Route path='/gamehistory'render={() => (
-                 <Redirect to='/' />)}/>
+               <Route path='/:gameId/gamehistory'render={(props) => (
+                 <GameHistory {...props} />)}/>
 
               <Route exact path='/' render={(props) => (
                <GameList {...props} />)}/>

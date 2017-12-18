@@ -26,7 +26,6 @@ class Canvas extends Component {
     this.onMouseLeave   = this.onMouseLeave.bind(this)
     this.redraw         = this.redraw.bind(this)
     this.onSave         = this.onSave.bind(this)
-    this.changeColor    = this.changeColor.bind(this)
     this.resizeCanvas   = this.resizeCanvas.bind(this)
   }
 
@@ -86,11 +85,6 @@ class Canvas extends Component {
     this.setState({paint: false})
   }
 
-  //Call this function on ColorPicker changeColor
-  changeColor(color) {
-    this.setState({color: color.hex})
-  }
-
   resizeCanvas() {
     this.setState({
       canvasWidth: this.refs.canvasHolder.offsetWidth,
@@ -105,7 +99,6 @@ class Canvas extends Component {
         'drawing': image
       })
       .then((response) => {
-        console.log('run request')
         this.props.requestdata()
       })
       .catch((err) => console.log(err))
@@ -117,7 +110,6 @@ class Canvas extends Component {
       canvasWidth: this.refs.canvasHolder.offsetWidth,
       canvasHeight: this.refs.canvasHolder.offsetHeight
     })
-
     window.addEventListener("resize", this.resizeCanvas)
   }
 
@@ -140,6 +132,8 @@ class Canvas extends Component {
       borderRadius: borderRadius,
       backgroundColor: backgroundColor
     }
+
+
 
     return (
       <div className="flex flex-column canvas-holder" ref="canvasHolder">
