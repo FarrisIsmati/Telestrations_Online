@@ -95,7 +95,7 @@ class Canvas extends Component {
   // Save image as base64
   onSave(){
     let image = this.state.canvas.toDataURL()
-    axios.post(`http://localhost:3001/api/game/${this.props.match.params.gameId}/history`, {
+    axios.post(`https://project3-sjf.herokuapp.com/api/game/${this.props.match.params.gameId}/history`, {
         'drawing': image
       })
       .then((response) => {
