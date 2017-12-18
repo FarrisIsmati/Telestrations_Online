@@ -26,7 +26,7 @@ class App extends Component {
                <GameList {...props} />)}/>
 
               <Route path='/:gameId' render={(props) => (
-                <Game />)}/>
+                <Game {...props} />)}/>
              </Switch>
            </div>
 

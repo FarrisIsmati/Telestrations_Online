@@ -12,12 +12,26 @@ class Game extends Component {
 
     this.state = {
         started: false,
-        completed: false,
-        phrase: '',
     }
+
+    this.getGameData = this.getGameData.bind(this)
   }
 
+  getGameData() {
+    axios.get(`http://localhost:3001/api/game/${this.props.match.params.gameId}`)
+      .then((response) => {
+          this.setState({...response.data})
+        })
+      .catch((err) => console.log(err))
+  }
 
+  componentDidMount() {
+    this.getGameData()
+  }
+
+  componentDidUpdate() {
+    console.log(this.state)
+  }
 
   render () {
     return (
