@@ -12,6 +12,7 @@ class Canvas extends Component {
 
     this.state = {
       canvasWidth: '',
+      canvasHeight: '',
       clickX: [],
       clickY: [],
       clickDrag: [],
@@ -92,19 +93,22 @@ class Canvas extends Component {
 
   resizeCanvas() {
     this.setState({
-      canvasWidth: this.refs.canvasHolder.offsetWidth
+      canvasWidth: this.refs.canvasHolder.offsetWidth,
+      canvasHeight: this.refs.canvasHolder.offsetHeight
     })
   }
 
   // Save image as base64
-  onSave(e){
+  onSave(){
     let image = this.state.canvas.toDataURL()
+    console.log(image)
   }
 
   componentDidMount() {
     this.setState({
       canvas: this.refs.canvas,
-      canvasWidth: this.refs.canvasHolder.offsetWidth
+      canvasWidth: this.refs.canvasHolder.offsetWidth,
+      canvasHeight: this.refs.canvasHolder.offsetHeight
     })
 
     window.addEventListener("resize", this.resizeCanvas)
@@ -120,7 +124,8 @@ class Canvas extends Component {
       borderWidth,
       borderRadius,
       borderColor,
-      backgroundColor
+      backgroundColor,
+      children
     } = this.props
 
     const canvasStyle = {
@@ -137,6 +142,10 @@ class Canvas extends Component {
           onClick={(e) => this.onMouseClick(e, e.target)}
           onMouseLeave={(e) => this.onMouseLeave()}
           width={this.state.canvasWidth} height={height} />
+        <div>
+          {children}
+          <p onClick={this.onSave}>Next</p>
+        </div>
       </div>
     )
   }
@@ -147,7 +156,8 @@ Canvas.propTypes = {
   borderWidth: PropTypes.string,
   borderRadius: PropTypes.string,
   borderColor: PropTypes.string,
-  backgroundColor: PropTypes.string
+  backgroundColor: PropTypes.string,
+  children: PropTypes.node
 }
 
 Canvas.defaultProps = {

@@ -23,7 +23,7 @@ class App extends Component {
                  <Redirect to='/' />)}/>
 
               <Route exact path='/' render={(props) => (
-               <GameList />)}/>
+               <GameList {...props} />)}/>
 
               <Route path='/:gameId' render={(props) => (
                 <Game />)}/>
