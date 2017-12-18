@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes            from 'prop-types'
-import ColorPicker          from './ColorPicker'
+import axios                from 'axios'
 
 //CSS
 import                           './Canvas.css'
@@ -11,6 +11,8 @@ class Canvas extends Component {
     super(props)
 
     this.state = {
+      canvasWidth: '',
+      canvasHeight: '',
       clickX: [],
       clickY: [],
       clickDrag: [],
@@ -24,7 +26,7 @@ class Canvas extends Component {
     this.onMouseLeave   = this.onMouseLeave.bind(this)
     this.redraw         = this.redraw.bind(this)
     this.onSave         = this.onSave.bind(this)
-    this.changeColor    = this.changeColor.bind(this)
+    this.resizeCanvas   = this.resizeCanvas.bind(this)
   }
 
   // Sets up Canvas and handles drawing based on state of mouse position
@@ -83,18 +85,32 @@ class Canvas extends Component {
     this.setState({paint: false})
   }
 
-  //Call this function on ColorPicker changeColor
-  changeColor(color) {
-    this.setState({color: color.hex})
+  resizeCanvas() {
+    this.setState({
+      canvasWidth: this.refs.canvasHolder.offsetWidth,
+      canvasHeight: this.refs.canvasHolder.offsetHeight
+    })
   }
 
   // Save image as base64
-  onSave(e){
+  onSave(){
     let image = this.state.canvas.toDataURL()
+    axios.post(`https://project3-sjf.herokuapp.com/api/game/${this.props.match.params.gameId}/history`, {
+        'drawing': image
+      })
+      .then((response) => {
+        this.props.requestdata()
+      })
+      .catch((err) => console.log(err))
   }
 
   componentDidMount() {
-    this.setState({canvas: this.refs.canvas})
+    this.setState({
+      canvas: this.refs.canvas,
+      canvasWidth: this.refs.canvasHolder.offsetWidth,
+      canvasHeight: this.refs.canvasHolder.offsetHeight
+    })
+    window.addEventListener("resize", this.resizeCanvas)
   }
 
   componentDidUpdate() {
@@ -103,12 +119,12 @@ class Canvas extends Component {
 
   render() {
     const {
-      width,
       height,
       borderWidth,
       borderRadius,
       borderColor,
-      backgroundColor
+      backgroundColor,
+      children
     } = this.props
 
     const canvasStyle = {
@@ -117,15 +133,19 @@ class Canvas extends Component {
       backgroundColor: backgroundColor
     }
 
+
+
     return (
-      <div className="flex">
+      <div className="flex flex-column canvas-holder" ref="canvasHolder">
         <canvas className="canvas" ref='canvas' style={canvasStyle}
           onMouseDown={(e) => this.onMouseDown(e, e.target)}
           onMouseMove={(e) => this.onMouseMove(e, e.target)}
           onClick={(e) => this.onMouseClick(e, e.target)}
           onMouseLeave={(e) => this.onMouseLeave()}
-          width={width} height={height} />
-        <div className="canvas-tools-holder">
+          width={this.state.canvasWidth} height={height} />
+        <div>
+          {children}
+          <p onClick={this.onSave}>Next</p>
         </div>
       </div>
     )
@@ -133,17 +153,15 @@ class Canvas extends Component {
 }
 
 Canvas.propTypes = {
-  width: PropTypes.string,
   height: PropTypes.string,
   borderWidth: PropTypes.string,
   borderRadius: PropTypes.string,
   borderColor: PropTypes.string,
-  backgroundColor: PropTypes.string
+  backgroundColor: PropTypes.string,
+  children: PropTypes.node
 }
 
 Canvas.defaultProps = {
-  width: '100%',
-  height: '100% ',
   borderWidth: '0px',
   borderRadius: '0px',
   borderColor: '#353535',
