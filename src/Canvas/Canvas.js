@@ -14,7 +14,7 @@ class Canvas extends Component {
       clickX: [],
       clickY: [],
       clickDrag: [],
-      color: '#353535',
+      color: '#FFFFFF',
       paint: false
     }
 
@@ -32,7 +32,7 @@ class Canvas extends Component {
     let context = canvas.getContext("2d")
     context.clearRect(0, 0, context.canvas.width, context.canvas.height)
     context.lineJoin = "round"
-    context.lineWidth = 9
+    context.lineWidth = 10
 
     for(let i = 0; i < this.state.clickX.length; i++) {
       context.beginPath()
@@ -57,13 +57,13 @@ class Canvas extends Component {
 
   onMouseDown(e, canvas) {
     this.setState({ paint: true })
-    this.addClick(e.pageX - canvas.offsetLeft - 2, e.pageY - canvas.offsetTop - 3)
+    this.addClick(e.pageX - canvas.offsetLeft + 5, e.pageY - canvas.offsetTop + 4)
     this.redraw(canvas)
   }
 
   onMouseMove(e, canvas) {
     if(this.state.paint){
-      this.addClick(e.pageX - canvas.offsetLeft - 2, e.pageY - canvas.offsetTop - 3, true)
+      this.addClick(e.pageX - canvas.offsetLeft + 5, e.pageY - canvas.offsetTop + 4, true)
       this.redraw(canvas)
     }
   }
@@ -83,6 +83,7 @@ class Canvas extends Component {
     this.setState({paint: false})
   }
 
+  //Call this function on ColorPicker changeColor
   changeColor(color) {
     this.setState({color: color.hex})
   }
@@ -106,24 +107,25 @@ class Canvas extends Component {
       height,
       borderWidth,
       borderRadius,
-      borderColor
+      borderColor,
+      backgroundColor
     } = this.props
 
-    const canvasBorderStyle = {
+    const canvasStyle = {
       border: `${borderWidth} solid ${borderColor}`,
-      borderRadius: borderRadius
+      borderRadius: borderRadius,
+      backgroundColor: backgroundColor
     }
 
     return (
       <div className="flex">
-        <canvas className="canvas" ref='canvas' style={canvasBorderStyle}
+        <canvas className="canvas" ref='canvas' style={canvasStyle}
           onMouseDown={(e) => this.onMouseDown(e, e.target)}
           onMouseMove={(e) => this.onMouseMove(e, e.target)}
           onClick={(e) => this.onMouseClick(e, e.target)}
           onMouseLeave={(e) => this.onMouseLeave()}
           width={width} height={height} />
         <div className="canvas-tools-holder">
-          <ColorPicker changeColor={this.changeColor} />
         </div>
       </div>
     )
@@ -135,15 +137,18 @@ Canvas.propTypes = {
   height: PropTypes.string,
   borderWidth: PropTypes.string,
   borderRadius: PropTypes.string,
-  borderColor: PropTypes.string
+  borderColor: PropTypes.string,
+  backgroundColor: PropTypes.string
 }
 
 Canvas.defaultProps = {
   width: '100%',
   height: '100% ',
-  borderWidth: '1px',
-  borderRadius: '4px',
-  borderColor: '#353535'
+  borderWidth: '0px',
+  borderRadius: '0px',
+  borderColor: '#353535',
+  backgroundColor: '#E24E24'
 }
-
+//Color Plalete
+//Papaya #E24E24 Mustartd #E98000 Blush #EB6E80 Aqua #008F95
 export default Canvas;
