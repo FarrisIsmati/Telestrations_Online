@@ -1,9 +1,11 @@
 .canvas-holder {
-
+  width: 100%;
 }
 
 .canvas-tools-holder {
-  margin-left: 20px;
+}
+
+.canvas {
 }
 
 .canvas:hover{

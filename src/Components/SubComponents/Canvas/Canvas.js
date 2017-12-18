@@ -11,6 +11,7 @@ class Canvas extends Component {
     super(props)
 
     this.state = {
+      canvasWidth: '',
       clickX: [],
       clickY: [],
       clickDrag: [],
@@ -25,6 +26,7 @@ class Canvas extends Component {
     this.redraw         = this.redraw.bind(this)
     this.onSave         = this.onSave.bind(this)
     this.changeColor    = this.changeColor.bind(this)
+    this.resizeCanvas   = this.resizeCanvas.bind(this)
   }
 
   // Sets up Canvas and handles drawing based on state of mouse position
@@ -88,13 +90,24 @@ class Canvas extends Component {
     this.setState({color: color.hex})
   }
 
+  resizeCanvas() {
+    this.setState({
+      canvasWidth: this.refs.canvasHolder.offsetWidth
+    })
+  }
+
   // Save image as base64
   onSave(e){
     let image = this.state.canvas.toDataURL()
   }
 
   componentDidMount() {
-    this.setState({canvas: this.refs.canvas})
+    this.setState({
+      canvas: this.refs.canvas,
+      canvasWidth: this.refs.canvasHolder.offsetWidth
+    })
+
+    window.addEventListener("resize", this.resizeCanvas)
   }
 
   componentDidUpdate() {
@@ -103,7 +116,6 @@ class Canvas extends Component {
 
   render() {
     const {
-      width,
       height,
       borderWidth,
       borderRadius,
@@ -118,22 +130,19 @@ class Canvas extends Component {
     }
 
     return (
-      <div className="flex">
+      <div className="flex canvas-holder" ref="canvasHolder">
         <canvas className="canvas" ref='canvas' style={canvasStyle}
           onMouseDown={(e) => this.onMouseDown(e, e.target)}
           onMouseMove={(e) => this.onMouseMove(e, e.target)}
           onClick={(e) => this.onMouseClick(e, e.target)}
           onMouseLeave={(e) => this.onMouseLeave()}
-          width={width} height={height} />
-        <div className="canvas-tools-holder">
-        </div>
+          width={this.state.canvasWidth} height={height} />
       </div>
     )
   }
 }
 
 Canvas.propTypes = {
-  width: PropTypes.string,
   height: PropTypes.string,
   borderWidth: PropTypes.string,
   borderRadius: PropTypes.string,
@@ -142,8 +151,6 @@ Canvas.propTypes = {
 }
 
 Canvas.defaultProps = {
-  width: '100%',
-  height: '100% ',
   borderWidth: '0px',
   borderRadius: '0px',
   borderColor: '#353535',
