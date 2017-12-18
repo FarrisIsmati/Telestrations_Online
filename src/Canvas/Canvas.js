@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import PropTypes            from 'prop-types'
+import ColorPicker          from './ColorPicker'
 
 // Tutorial http://www.williammalone.com/articles/create-html5-canvas-javascript-drawing-app/#demo-simple
 class Canvas extends Component {
@@ -10,6 +11,7 @@ class Canvas extends Component {
       clickX: [],
       clickY: [],
       clickDrag: [],
+      color: '#000000',
       paint: false
     }
 
@@ -19,14 +21,13 @@ class Canvas extends Component {
     this.onMouseLeave   = this.onMouseLeave.bind(this)
     this.redraw         = this.redraw.bind(this)
     this.onSave         = this.onSave.bind(this)
+    this.changeColor    = this.changeColor.bind(this)
   }
 
   // Sets up Canvas and handles drawing based on state of mouse position
   redraw(canvas){
-    let context = canvas.getContext("2d");
+    let context = canvas.getContext("2d")
     context.clearRect(0, 0, context.canvas.width, context.canvas.height)
-
-    context.strokeStyle = "#df4b26"
     context.lineJoin = "round"
     context.lineWidth = 5
 
@@ -34,11 +35,12 @@ class Canvas extends Component {
       context.beginPath()
       if (this.state.clickDrag[i] && i) {
         context.moveTo(this.state.clickX[i-1], this.state.clickY[i-1])
-       } else {
-         context.moveTo(this.state.clickX[i]-1, this.state.clickY[i])
-       }
+      } else {
+        context.moveTo(this.state.clickX[i]-1, this.state.clickY[i])
+      }
        context.lineTo(this.state.clickX[i], this.state.clickY[i])
        context.closePath()
+       context.strokeStyle = this.state.color
        context.stroke()
     }
   }
@@ -63,8 +65,8 @@ class Canvas extends Component {
     }
   }
 
+  //On Mouse Click
   onMouseClick(e, canvas){
-    this.setState({canvas: canvas})
     if (this.state.paint){
       this.setState({ paint: false })
       this.redraw(canvas)
@@ -73,8 +75,13 @@ class Canvas extends Component {
     }
   }
 
+  //On Mouse Leave Stop painting
   onMouseLeave(e){
     this.setState({paint: false})
+  }
+
+  changeColor(color) {
+    this.setState({color: color.hex})
   }
 
   // Save image as base64
@@ -82,15 +89,25 @@ class Canvas extends Component {
     let image = this.state.canvas.toDataURL()
   }
 
+  componentDidMount() {
+    this.setState({canvas: this.refs.canvas})
+  }
+
+  componentDidUpdate() {
+    this.redraw(this.state.canvas)
+  }
+
   render() {
     const {
       width,
       height,
-      borderWidth
+      borderWidth,
+      borderRadius
     } = this.props
 
     const canvasBorderStyle = {
-      border: `${borderWidth} solid rgb(0,0,0)`
+      border: `${borderWidth} solid rgb(0,0,0)`,
+      borderRadius: borderRadius
     }
 
     return (
@@ -101,6 +118,7 @@ class Canvas extends Component {
           onClick={(e) => this.onMouseClick(e, e.target)}
           onMouseLeave={(e) => this.onMouseLeave()}
           width={width} height={height} />
+        <ColorPicker changeColor={this.changeColor} />
       </div>
     )
   }
@@ -109,13 +127,15 @@ class Canvas extends Component {
 Canvas.propTypes = {
   width: PropTypes.string,
   height: PropTypes.string,
-  borderWidth: PropTypes.string
+  borderWidth: PropTypes.string,
+  borderRadius: PropTypes.string
 }
 
 Canvas.defaultProps = {
-  width: '400px',
-  height: '250px',
-  borderWidth: '1px'
+  width: '100%',
+  height: '100% ',
+  borderWidth: '1px',
+  borderRadius: '4px'
 }
 
 export default Canvas;
