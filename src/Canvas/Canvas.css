@@ -1,0 +1,11 @@
+.canvas-holder {
+
+}
+
+.canvas-tools-holder {
+  margin-left: 20px;
+}
+
+.canvas:hover{
+  cursor: url('../Icons/circle-open10.png'), auto;
+}

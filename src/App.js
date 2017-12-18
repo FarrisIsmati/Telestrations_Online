@@ -9,7 +9,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Canvas width="600px" height="600px" borderWidth="2px" borderRadius="10px"/>
+        <Canvas width="600px" height="400px" borderWidth="8px" borderRadius="5px"/>
       </div>
     )
   }
