@@ -4,6 +4,10 @@
 
 .flex-column{
   flex-direction: column;
+}
+
+.flex-column-center{
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }

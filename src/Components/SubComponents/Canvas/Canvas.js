@@ -118,7 +118,6 @@ class Canvas extends Component {
 
   componentDidUpdate() {
     this.redraw(this.state.canvas)
-    console.log(this.props.guesses)
   }
 
   render() {
@@ -148,7 +147,7 @@ class Canvas extends Component {
           onMouseLeave={(e) => this.onMouseLeave()}
           width={this.state.canvasWidth} height={height}
           />
-        <div>
+        <div className="flex">
           {children}
           <p onClick={this.onSave}>Next</p>
         </div>
