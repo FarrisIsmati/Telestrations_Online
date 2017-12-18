@@ -4,7 +4,7 @@ import ColorPicker          from './ColorPicker'
 
 //CSS
 import                           './Canvas.css'
-import                           '../Stylesheets/CommonStyles.css'
+import                           '../../../Stylesheets/CommonStyles.css'
 
 class Canvas extends Component {
   constructor(props){

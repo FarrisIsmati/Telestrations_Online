@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-
 import { Route, Link, Redirect, Switch } from 'react-router-dom'
-import Game from './components/Game/Game'
-import Header from './components/Header/Header'
-import GameHistory from './components/GameHistory/GameHistory'
-import GameList from './components/GameList/GameList'
+
+import Game from './Components/Main/Game/Game'
+import Header from './Components/Main/Header/Header'
+import GameHistory from './Components/Main/GameHistory/GameHistory'
+import GameList from './Components/Main/GameList/GameList'
 
 class App extends Component {
   render() {
