@@ -4,6 +4,7 @@ import axios                from 'axios'
 import Canvas               from '../../SubComponents/Canvas/Canvas'
 import Guess                from '../../SubComponents/Guess/Guess'
 import Button               from '../../SubComponents/Button/Button'
+import DropDown             from '../../SubComponents/DropDown/DropDown'
 
 import                           '../../../Stylesheets/CommonStyles.css'
 import                           './Game.css'
@@ -69,21 +70,29 @@ class Game extends Component {
 
     const canvasStart = <Canvas
       {...this.props}
-      phrase={this.state.pharase}
+      phrase={this.state.phrase}
       startgame={this.startGame}
       requestdata={this.getGameData}
       height={'500px'}
-    />
+    >
+    <DropDown />
+  </Canvas>
 
     //If the game hasn't started render canvas start otherwise render canvas play
     const canvas = this.state.guesses === 0 ? canvasStart : canvasPlay
-
+    
     return (
       <div className='game-holder flex flex-column'>
         {
           this.getGuesses() && this.state.loaded ?
           canvas :
-          <Guess {...this.props} requestdata={this.getGameData} />
+          null
+        }
+
+        {
+          !this.getGuesses() && this.state.loaded ?
+          <Guess {...this.props} requestdata={this.getGameData} /> :
+          null
         }
       </div>
     )

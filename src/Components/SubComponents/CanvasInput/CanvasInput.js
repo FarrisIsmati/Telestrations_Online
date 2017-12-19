@@ -6,14 +6,13 @@ import Button               from '../Button/Button'
 import                           './CanvasInput.css'
 import                           '../../../Stylesheets/CommonStyles.css'
 
-
 class CanvasInput extends Component {
   render() {
     return (
       <div className="flex flex-column-center">
         {this.props.children}
         <div className="flex text-holder">
-          <p><strong>Draw a</strong></p>
+          <p><strong>Draw this</strong></p>
           <p>{this.props.phrase}</p>
         </div>
         <Button buttonClick={this.props.save} name="Next" />

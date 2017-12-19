@@ -64,13 +64,13 @@ class Canvas extends Component {
 
   onMouseDown(e, canvas) {
     this.setState({ paint: true })
-    this.addClick(e.pageX - canvas.offsetLeft + 5, e.pageY - canvas.offsetTop + 4)
+    this.addClick(e.pageX - canvas.offsetLeft + 8, e.pageY - canvas.offsetTop + 8)
     this.redraw(canvas)
   }
 
   onMouseMove(e, canvas) {
     if(this.state.paint){
-      this.addClick(e.pageX - canvas.offsetLeft + 5, e.pageY - canvas.offsetTop + 4, true)
+      this.addClick(e.pageX - canvas.offsetLeft + 8, e.pageY - canvas.offsetTop + 8, true)
       this.redraw(canvas)
     }
   }

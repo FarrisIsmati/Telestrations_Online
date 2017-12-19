@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import PropTypes            from 'prop-types'
 import axios                from 'axios'
 
-import InputBox             from '../InputBox/InputBox'
+import GuessInput           from '../GuessInput/GuessInput'
 import Button               from '../Button/Button'
+import SwitchPrompt         from '../SwitchPrompt/SwitchPrompt'
 
 import                           './Guess.css'
 
@@ -11,11 +12,12 @@ class Guess extends Component {
   constructor(props){
     super(props)
     this.state = {
-      guess: ''
+      guess: '',
       loaded: false,
       image: ''
     }
 
+    this.setGuess = this.setGuess.bind(this)
     this.getGameData = this.getGameData.bind(this)
     this.onSave = this.onSave.bind(this)
   }
@@ -23,15 +25,19 @@ class Guess extends Component {
   getGameData() {
     axios.get(`https://project3-sjf.herokuapp.com/api/game/${this.props.match.params.gameId}`)
       .then((response) => {
-          this.setState({...response.data})
-          this.setState({loaded: true})
+          setTimeout(function(){
+            this.setState({...response.data})
+            this.setState({loaded: true})
+          }.bind(this), 3500)
+
         })
       .catch((err) => console.log(err))
   }
 
-  onSave(){
+  onSave() {
+    console.log(this.state.guess)
     axios.post(`https://project3-sjf.herokuapp.com/api/game/${this.props.match.params.gameId}/history`, {
-        'guess': 'A test string'
+        'guess': this.state.guess
       })
       .then((response) => {
         console.log('run request')
@@ -39,6 +45,12 @@ class Guess extends Component {
 
       })
       .catch((err) => console.log(err))
+  }
+
+  setGuess(e) {
+    this.setState({
+      guess: e.target.value
+    })
   }
 
   componentDidMount() {
@@ -52,18 +64,20 @@ class Guess extends Component {
       height: '100%',
       backgroundColor: '#E24E24'
     }
+
     return (
       <div>
         {
           this.state.loaded && this.state.history.length >= 1 ?
-          <img src={this.state.history[this.state.guesses - 1].drawing}/>:
-          <div style={tempImgStyle}></div>
+          <div>
+            <div className='input-holder'>
+              <img src={this.state.history[this.state.guesses - 1].drawing}/>
+              <GuessInput setguess={this.setGuess} />
+              <Button onClick={this.onSave} buttonClick={this.onSave} name="Next" />
+            </div>
+          </div>:
+          <SwitchPrompt />
         }
-        <div className='input-holder'>
-          <InputBox setguess={} />
-          <Button onClick={this.onSave} buttonClick={this.onSave} name="Next" />
-
-        </div>
       </div>
     )
   }
