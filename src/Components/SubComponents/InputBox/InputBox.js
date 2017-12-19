@@ -10,7 +10,7 @@ const InputBox = ({
 }) => {
   return (
     <div>
-      <input guess={guess} />
+      <input guess={guess} onChange={this.props.setguess}/>
     </div>
   )
 }

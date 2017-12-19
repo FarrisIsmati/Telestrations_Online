@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes            from 'prop-types'
 import axios                from 'axios'
+
+import InputBox             from '../InputBox/InputBox'
 import Button               from '../Button/Button'
 
 import                           './Guess.css'
@@ -9,6 +11,7 @@ class Guess extends Component {
   constructor(props){
     super(props)
     this.state = {
+      guess: ''
       loaded: false,
       image: ''
     }
@@ -57,6 +60,7 @@ class Guess extends Component {
           <div style={tempImgStyle}></div>
         }
         <div className='input-holder'>
+          <InputBox setguess={} />
           <Button onClick={this.onSave} buttonClick={this.onSave} name="Next" />
 
         </div>
