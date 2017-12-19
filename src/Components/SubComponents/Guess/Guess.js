@@ -3,6 +3,8 @@ import PropTypes            from 'prop-types'
 import axios                from 'axios'
 import Button               from '../Button/Button'
 
+import                           './Guess.css'
+
 class Guess extends Component {
   constructor(props){
     super(props)
@@ -56,6 +58,7 @@ class Guess extends Component {
         }
         <div className='input-holder'>
           <Button onClick={this.onSave} buttonClick={this.onSave} name="Next" />
+
         </div>
       </div>
     )

@@ -58,9 +58,10 @@ class Game extends Component {
   }
 
   render () {
-    const canvasPlay = <Canvas {...this.props} guesses={this.state.guesses} requestdata={this.getGameData} height='500px'/>
-    const canvasStart = <Canvas {...this.props} guesses={this.state.guesses} startgame={this.startGame} requestdata={this.getGameData} height='500px'>
-      <Button name="Start"/>
+
+    const canvasPlay = <Canvas {...this.props} requestdata={this.getGameData} height={'500px'} />
+    const canvasStart = <Canvas {...this.props} startgame={this.startGame} requestdata={this.getGameData} height={'500px'}>
+      
     </Canvas>
 
     //If the game hasn't started render canvas start otherwise render canvas play

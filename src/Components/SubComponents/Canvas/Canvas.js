@@ -32,6 +32,7 @@ class Canvas extends Component {
 
   // Sets up Canvas and handles drawing based on state of mouse position
   redraw(canvas){
+    canvas.oncontextmenu = (e) => e.preventDefault()
     let context = canvas.getContext("2d")
     context.clearRect(0, 0, context.canvas.width, context.canvas.height)
     context.lineJoin = "round"
@@ -120,7 +121,6 @@ class Canvas extends Component {
 
   componentDidUpdate() {
     this.redraw(this.state.canvas)
-    console.log(this.props.guesses)
   }
 
   render() {
@@ -148,9 +148,10 @@ class Canvas extends Component {
           onMouseLeave={(e) => this.onMouseLeave()}
           width={this.state.canvasWidth} height={height}
           />
-        <div>
+        <div className="flex flex-column-center">
           {children}
           <Button onClick={this.onSave} buttonClick={this.onSave} name="Next" />
+
         </div>
       </div>
     )
