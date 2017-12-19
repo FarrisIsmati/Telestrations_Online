@@ -22,10 +22,6 @@ class Guess extends Component {
       .then((response) => {
           this.setState({...response.data})
           this.setState({loaded: true})
-<<<<<<< HEAD
-          console.log(this.state.history[this.state.guesses - 1].drawing)
-=======
->>>>>>> ca3e86ad3e19783d5e91cddb029fae4016a26714
         })
       .catch((err) => console.log(err))
   }

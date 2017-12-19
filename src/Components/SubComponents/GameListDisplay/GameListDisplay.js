@@ -6,11 +6,11 @@ class GameListDisplay extends Component {
   constructor() {
     super ()
     this.state = {
-      games: [],
-      loaded: false
+      games: []
     }
     this.getCompletedGames = this.getCompletedGames.bind(this)
   }
+
   getCompletedGames() {
     axios.get('https://project3-sjf.herokuapp.com/api/game')
     .then((response) => {
@@ -20,7 +20,6 @@ class GameListDisplay extends Component {
     })
     .catch((err) => console.log(err))
   }
-
 
 componentDidMount() {
   this.getCompletedGames()
@@ -34,8 +33,8 @@ render() {
            <p> {game.pharase} </p>
            <p> By {game.history[0]} </p>
            <p>{game.date}</p>
-         </div> :
-         null
+         </div>:
+         <div />
        }
        )
      })
