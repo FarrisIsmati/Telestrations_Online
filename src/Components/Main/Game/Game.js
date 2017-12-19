@@ -3,6 +3,7 @@ import axios                from 'axios'
 
 import Canvas               from '../../SubComponents/Canvas/Canvas'
 import Guess                from '../../SubComponents/Guess/Guess'
+import Button               from '../../SubComponents/Button/Button'
 
 import                           '../../../Stylesheets/CommonStyles.css'
 import                           './Game.css'
@@ -57,9 +58,10 @@ class Game extends Component {
   }
 
   render () {
-    const canvasPlay = <Canvas {...this.props} requestdata={this.getGameData} height='500px'/>
-    const canvasStart = <Canvas {...this.props} startgame={this.startGame} requestdata={this.getGameData} height='500px'>
-      <p>START</p>
+
+    const canvasPlay = <Canvas {...this.props} requestdata={this.getGameData} height={'500px'} />
+    const canvasStart = <Canvas {...this.props} startgame={this.startGame} requestdata={this.getGameData} height={'500px'}>
+      
     </Canvas>
 
     //If the game hasn't started render canvas start otherwise render canvas play

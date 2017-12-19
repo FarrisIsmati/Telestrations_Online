@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes            from 'prop-types'
 import axios                from 'axios'
+import Button               from '../Button/Button'
 
 //CSS
 import                           './Canvas.css'
@@ -31,10 +32,13 @@ class Canvas extends Component {
 
   // Sets up Canvas and handles drawing based on state of mouse position
   redraw(canvas){
+    canvas.oncontextmenu = (e) => e.preventDefault()
     let context = canvas.getContext("2d")
     context.clearRect(0, 0, context.canvas.width, context.canvas.height)
     context.lineJoin = "round"
     context.lineWidth = 10
+    context.fillStyle = '#E24E24';
+    context.fillRect(0, 0, canvas.width, canvas.height)
 
     for(let i = 0; i < this.state.clickX.length; i++) {
       context.beginPath()
@@ -94,6 +98,7 @@ class Canvas extends Component {
 
   // Save image as base64
   onSave(){
+    console.log("Firing")
     let image = this.state.canvas.toDataURL()
     axios.post(`https://project3-sjf.herokuapp.com/api/game/${this.props.match.params.gameId}/history`, {
         'drawing': image
@@ -110,7 +115,8 @@ class Canvas extends Component {
       canvasWidth: this.refs.canvasHolder.offsetWidth,
       canvasHeight: this.refs.canvasHolder.offsetHeight
     })
-    window.addEventListener("resize", this.resizeCanvas)
+
+    //window.addEventListener("resize", this.resizeCanvas)
   }
 
   componentDidUpdate() {
@@ -133,8 +139,6 @@ class Canvas extends Component {
       backgroundColor: backgroundColor
     }
 
-
-
     return (
       <div className="flex flex-column canvas-holder" ref="canvasHolder">
         <canvas className="canvas" ref='canvas' style={canvasStyle}
@@ -142,10 +146,11 @@ class Canvas extends Component {
           onMouseMove={(e) => this.onMouseMove(e, e.target)}
           onClick={(e) => this.onMouseClick(e, e.target)}
           onMouseLeave={(e) => this.onMouseLeave()}
-          width={this.state.canvasWidth} height={height} />
-        <div>
+          width={this.state.canvasWidth} height={height}
+          />
+        <div className="flex flex-column-center">
           {children}
-          <p onClick={this.onSave}>Next</p>
+          <Button onClick={this.onSave} buttonClick={this.onSave} name="Next" />
         </div>
       </div>
     )

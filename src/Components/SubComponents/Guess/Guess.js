@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes            from 'prop-types'
 import axios                from 'axios'
+import Button               from '../Button/Button'
+
+import                           './Guess.css'
 
 class Guess extends Component {
   constructor(props){
@@ -19,7 +22,10 @@ class Guess extends Component {
       .then((response) => {
           this.setState({...response.data})
           this.setState({loaded: true})
+<<<<<<< HEAD
           console.log(this.state.history[this.state.guesses - 1].drawing)
+=======
+>>>>>>> ca3e86ad3e19783d5e91cddb029fae4016a26714
         })
       .catch((err) => console.log(err))
   }
@@ -41,14 +47,22 @@ class Guess extends Component {
   }
 
   render() {
+    //Find height width of image and set it to that
+    const tempImgStyle = {
+      width: '100%',
+      height: '100%',
+      backgroundColor: '#E24E24'
+    }
     return (
       <div>
         {
-          this.state.loaded ?
-        <img src={this.state.history[0].drawing}/>:
-        <p>loading</p>}
+          this.state.loaded && this.state.history.length >= 1 ?
+          <img src={this.state.history[this.state.guesses - 1].drawing}/>:
+          <div style={tempImgStyle}></div>
+        }
         <div className='input-holder'>
-          <p onClick={this.onSave}>Next</p>
+          <Button onClick={this.onSave} buttonClick={this.onSave} name="Next" />
+
         </div>
       </div>
     )
