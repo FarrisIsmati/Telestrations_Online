@@ -16,7 +16,6 @@ class GameListDisplay extends Component {
     .then((response) => {
       this.setState({games: response.data})
       this.setState({loaded:true})
-      console.log(response.data)
     })
     .catch((err) => console.log(err))
   }
@@ -26,24 +25,21 @@ componentDidMount() {
 }
 
 render() {
-  const games = this.state.games.map((game, index) => {
+  const Games = this.state.games.map((game) => {
+    if(game.complete) {
        return (
-         { game.complete ?
-         <div key={ index }>
-           <p> {game.pharase} </p>
-           <p> By {game.history[0]} </p>
-           <p>{game.date}</p>
-         </div>:
-         <div />
-       }
-       )
-     })
-
+         <div key={ game._id }>
+           <img src={game.history[0].drawing}/>
+           <p> {game.phrase} </p>
+        </div>
+      )
+    }
+  })
 
   return(
     <div>
     {this.state.loaded ?
-      <p>{games }</p>:
+      <p>{Games}</p>:
       <p>loading</p>
     }
     </div>
