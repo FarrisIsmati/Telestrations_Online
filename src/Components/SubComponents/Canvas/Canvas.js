@@ -20,7 +20,7 @@ class Canvas extends Component {
       clickX: [],
       clickY: [],
       clickDrag: [],
-      color: '#FFFFFF',
+      color: '#C0B283',
       paint: false
     }
 
@@ -39,7 +39,7 @@ class Canvas extends Component {
     context.clearRect(0, 0, context.canvas.width, context.canvas.height)
     context.lineJoin = "round"
     context.lineWidth = 10
-    context.fillStyle = '#FF652F';
+    context.fillStyle = '#f4f4f4';
     context.fillRect(0, 0, canvas.width, canvas.height)
 
     for(let i = 0; i < this.state.clickX.length; i++) {
@@ -127,7 +127,7 @@ class Canvas extends Component {
     const canvasStyle = {
       border: `${borderWidth} solid ${borderColor}`,
       borderRadius: borderRadius,
-      backgroundColor: backgroundColor
+      backgroundColor: backgroundColor,
     }
 
     return (
@@ -156,10 +156,10 @@ Canvas.propTypes = {
 }
 
 Canvas.defaultProps = {
-  borderWidth: '0px',
-  borderRadius: '0px',
-  borderColor: '#353535',
-  backgroundColor: '#E24E24'
+  borderWidth: '5px',
+  borderRadius: '5px',
+  borderColor: '#373737',
+  backgroundColor: '#F4F4F4'
 }
 //Color Plalete
 //Papaya #E24E24 Mustartd #E98000 Blush #EB6E80 Aqua #008F95

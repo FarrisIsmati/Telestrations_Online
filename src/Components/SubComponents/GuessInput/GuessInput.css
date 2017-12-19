@@ -5,28 +5,17 @@
 }
 
 input {
- background: #2196F3;
- position: relative;
- font-family: 'Roboto', sans-serif;
- color: #fff;
-}
-
-#guess {
- position: relative;
- max-width: 400px;
- margin: 150px auto 0;
+ font-family: 'Indie Flower', cursive;
 }
 
 #guess input {
- border: 0;
- border-bottom: 2px solid #1976D2;
- width: 100%;
- font-size: 30px;
- line-height: 35px;
- height: 70px;
- text-align: center;
- padding: 10px;
- background: transparent;
-	color: #BBDEFB;
+  border: 0;
+  width: 100%;
+  font-size: 2em;
+  height: 2em;
+  text-align: center;
+  margin: 5px 0 0 0;
+  color: #373737;
   outline: 0;
+  border-bottom: 3px solid #373737;
 }

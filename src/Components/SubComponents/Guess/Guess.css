@@ -1,3 +1,5 @@
 .guess-holder p{
   margin: 0 2px 0 2px;
+  font-size: 2em;
+  font-weight: 700;
 }
