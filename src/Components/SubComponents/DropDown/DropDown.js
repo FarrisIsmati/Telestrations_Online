@@ -12,15 +12,14 @@ class DropDown extends Component {
   render() {
     return (
       <div>
-        <div class="dropdown">
-          <button class="dropbtn">Select Players</button>
-            <div class="dropdown-content">
+        <div className="dropdown">
+            <select onChange={(e) => this.props.setplayers(e)}>
               <option>2</option>
               <option>4</option>
               <option>6</option>
               <option>8</option>
               <option>10</option>
-            </div>
+            </select>
         </div>
       </div>
     )

@@ -14,6 +14,7 @@ class Canvas extends Component {
     super(props)
 
     this.state = {
+      setPlayers: 0,
       canvasWidth: '',
       canvasHeight: '',
       clickX: [],
@@ -139,7 +140,7 @@ class Canvas extends Component {
           width={this.state.canvasWidth} height={height}
           />
 
-        <CanvasInput phrase={this.props.phrase} children={children} save={this.onSave} />
+        <CanvasInput {...this.props} children={children} save={this.onSave} />
       </div>
     )
   }

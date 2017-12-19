@@ -10,7 +10,7 @@ class GameList extends Component{
 
   createGame() {
     axios.post('https://project3-sjf.herokuapp.com/api/game', {
-        'player': 6
+        'player': 2
       })
       .then((response) => {
           this.props.history.push(`/${response.data._id}`)

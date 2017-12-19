@@ -17,6 +17,7 @@ class Game extends Component {
         loaded: false
     }
 
+    this.setPlayers = this.setPlayers.bind(this)
     this.getGuesses = this.getGuesses.bind(this)
     this.startGame = this.startGame.bind(this)
     this.getGameData = this.getGameData.bind(this)
@@ -27,7 +28,6 @@ class Game extends Component {
       .then((response) => {
           this.setState({...response.data})
           this.setState({loaded: true})
-          //console.log(this.state.history[this.state.guesses - 1].guess)
         })
       .catch((err) => console.log(err))
   }
@@ -40,6 +40,17 @@ class Game extends Component {
         return false
       }
     }
+  }
+
+  setPlayers(e) {
+    axios.put(`https://project3-sjf.herokuapp.com/api/game/${this.props.match.params.gameId}`,
+      {
+        'player': e.target.value
+      })
+      .then((response) => {
+          console.log('players set')
+        })
+      .catch((err) => console.log(err))
   }
 
   startGame() {
@@ -66,6 +77,7 @@ class Game extends Component {
           phrase={this.state.history[this.state.guesses - 1].guess}
           requestdata={this.getGameData}
           height={'500px'}
+          start={false}
         /> : null
 
     const canvasStart = <Canvas
@@ -74,13 +86,14 @@ class Game extends Component {
       startgame={this.startGame}
       requestdata={this.getGameData}
       height={'500px'}
+      start={true}
     >
-    <DropDown />
+    <DropDown setplayers={(e) => this.setPlayers(e)}/>
   </Canvas>
 
     //If the game hasn't started render canvas start otherwise render canvas play
     const canvas = this.state.guesses === 0 ? canvasStart : canvasPlay
-    
+
     return (
       <div className='game-holder flex flex-column'>
         {
