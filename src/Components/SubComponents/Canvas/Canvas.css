@@ -1,5 +1,6 @@
 .canvas-holder {
   width: 100%;
+  height: 100%;
 }
 
 .canvas-tools-holder {
@@ -10,4 +11,8 @@
 
 .canvas:hover{
   cursor: url('../Icons/circle.png'), auto;
+}
+
+.text-holder p{
+  margin: 10px 2px 0 2px;
 }
