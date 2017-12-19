@@ -151,7 +151,6 @@ class Canvas extends Component {
         <div className="flex flex-column-center">
           {children}
           <Button onClick={this.onSave} buttonClick={this.onSave} name="Next" />
-
         </div>
       </div>
     )

@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Andada|Permanent+Marker|Raleway:300');
+* {
+ box-sizing: border-box;
+}
+
+input {
+ background: #2196F3;
+ position: relative;
+ font-family: 'Roboto', sans-serif;
+ color: #fff;
+}
+
+#guess {
+ position: relative;
+ max-width: 400px;
+ margin: 150px auto 0;
+}
+
+#guess input {
+ border: 0;
+ border-bottom: 2px solid #1976D2;
+ width: 100%;
+ font-size: 30px;
+ line-height: 35px;
+ height: 70px;
+ text-align: center;
+ padding: 10px;
+ background: transparent;
+	color: #BBDEFB;
+  outline: 0;
+}
