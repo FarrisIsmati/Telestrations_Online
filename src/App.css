@@ -22,8 +22,5 @@ font-family: 'Bungee';
  1px 1px 0 #ffe400;
  -webkit-font-smoothing: antialiased;
  /*^^smooths out the text so it doesnt look jagged when you make it hallow*/
-}
-
-.body {
-  color: black;
+  text-align: center;
 }

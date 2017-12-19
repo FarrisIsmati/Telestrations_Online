@@ -14,6 +14,7 @@ class Header extends Component{
             <Link to='/:gameId'> Create Header</Link>
           </li>
         </nav>
+        <h1 className='title'> Telestrations</h1>
       </div>
     )
    }
