@@ -8,9 +8,11 @@ class Header extends Component{
     return(
       <div className="header-holder">
         <nav>
-          <Link to='/'>Home</Link>
-          <Link to='/about'> About</Link>
-          <Link to='/:gameId'> Create Header</Link>
+          <li>
+            <Link to='/'>Home</Link>
+            <Link to='/about'> About</Link>
+            <Link to='/:gameId'> Create Header</Link>
+          </li>
         </nav>
       </div>
     )

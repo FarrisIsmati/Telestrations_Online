@@ -7,3 +7,23 @@
 .body {
   margin: 0 2.618% 0 2.618%;
 }
+
+html {
+  background-color:#272727;
+}
+
+h1, p {
+color: #272727;
+font-family: 'Bungee';
+ text-shadow:
+ -1px -1px 0 #ffe400,
+ 1px -1px 0 #ffe400,
+ -1px 1px 0 #ffe400,
+ 1px 1px 0 #ffe400;
+ -webkit-font-smoothing: antialiased;
+ /*^^smooths out the text so it doesnt look jagged when you make it hallow*/
+}
+
+.body {
+  color: black;
+}
