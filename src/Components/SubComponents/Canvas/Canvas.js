@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes            from 'prop-types'
 import axios                from 'axios'
+import Button               from '../Button/Button'
 
 //CSS
 import                           './Canvas.css'
@@ -96,6 +97,7 @@ class Canvas extends Component {
 
   // Save image as base64
   onSave(){
+    console.log("Firing")
     let image = this.state.canvas.toDataURL()
     axios.post(`https://project3-sjf.herokuapp.com/api/game/${this.props.match.params.gameId}/history`, {
         'drawing': image
@@ -137,8 +139,6 @@ class Canvas extends Component {
       backgroundColor: backgroundColor
     }
 
-
-
     return (
       <div className="flex flex-column canvas-holder" ref="canvasHolder">
         <canvas className="canvas" ref='canvas' style={canvasStyle}
@@ -150,7 +150,7 @@ class Canvas extends Component {
           />
         <div>
           {children}
-          <p onClick={this.onSave}>Next</p>
+          <Button onClick={this.onSave} buttonClick={this.onSave} name="Next" />
         </div>
       </div>
     )

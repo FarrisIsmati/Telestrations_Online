@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes            from 'prop-types'
 import axios                from 'axios'
+import Button               from '../Button/Button'
 
 class Guess extends Component {
   constructor(props){
@@ -54,7 +55,7 @@ class Guess extends Component {
           <div style={tempImgStyle}></div>
         }
         <div className='input-holder'>
-          <p onClick={this.onSave}>Next</p>
+          <Button onClick={this.onSave} buttonClick={this.onSave} name="Next" />
         </div>
       </div>
     )
