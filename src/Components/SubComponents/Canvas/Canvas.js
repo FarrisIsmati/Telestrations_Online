@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes            from 'prop-types'
 import axios                from 'axios'
-import Button               from '../Button/Button'
+
+import CanvasInput          from '../CanvasInput/CanvasInput'
 
 //CSS
 import                           './Canvas.css'
@@ -148,11 +149,8 @@ class Canvas extends Component {
           onMouseLeave={(e) => this.onMouseLeave()}
           width={this.state.canvasWidth} height={height}
           />
-        <div className="flex flex-column-center">
-          {children}
-          <Button onClick={this.onSave} buttonClick={this.onSave} name="Next" />
 
-        </div>
+        <CanvasInput phrase={this.props.phrase} children={children} save={this.onSave} />
       </div>
     )
   }

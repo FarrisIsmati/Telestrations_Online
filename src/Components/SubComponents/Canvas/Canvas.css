@@ -12,7 +12,3 @@
 .canvas:hover{
   cursor: url('../Icons/circle.png'), auto;
 }
-
-.text-holder p{
-  margin: 10px 2px 0 2px;
-}

@@ -26,6 +26,7 @@ class Game extends Component {
       .then((response) => {
           this.setState({...response.data})
           this.setState({loaded: true})
+          //console.log(this.state.history[this.state.guesses - 1].guess)
         })
       .catch((err) => console.log(err))
   }
@@ -58,11 +59,21 @@ class Game extends Component {
   }
 
   render () {
+    const canvasPlay =
+      this.state.loaded ? <Canvas
+          {...this.props}
+          phrase={'lol'}
+          requestdata={this.getGameData}
+          height={'500px'}
+        /> : null
 
-    const canvasPlay = <Canvas {...this.props} requestdata={this.getGameData} height={'500px'} />
-    const canvasStart = <Canvas {...this.props} startgame={this.startGame} requestdata={this.getGameData} height={'500px'}>
-      
-    </Canvas>
+    const canvasStart = <Canvas
+      {...this.props}
+      phrase={this.state.pharase}
+      startgame={this.startGame}
+      requestdata={this.getGameData}
+      height={'500px'}
+    />
 
     //If the game hasn't started render canvas start otherwise render canvas play
     const canvas = this.state.guesses === 0 ? canvasStart : canvasPlay
