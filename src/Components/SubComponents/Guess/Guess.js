@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes            from 'prop-types'
 import axios                from 'axios'
+import Button               from '../Button/Button'
 
 import                           './Guess.css'
 
@@ -55,12 +56,9 @@ class Guess extends Component {
           <img src={this.state.history[this.state.guesses - 1].drawing}/>:
           <div style={tempImgStyle}></div>
         }
-        <div className='flex flex-column-center'>
-          <div className='flex guess-holder'>
-            <p><strong>What is this?</strong></p>
-            <p>________ </p>
-          </div>
-          <p onClick={this.onSave}>Next</p>
+        <div className='input-holder'>
+          <Button onClick={this.onSave} buttonClick={this.onSave} name="Next" />
+
         </div>
       </div>
     )
