@@ -1,11 +1,24 @@
 .header-holder {
   height: 6%;
   margin: 0 2.618% 0 2.618%;
+  padding-bottom: 5px;
+  color: white;
+  background-color: #2B2B2B;
 }
 
-.header-holder {
-  color: white;
-}
 .title {
+  text-align: center;
+}
+
+h1, p {
+color: #272727;
+font-family: 'Bungee';
+ text-shadow:
+ -1px -1px 0 #ffe400,
+ 1px -1px 0 #ffe400,
+ -1px 1px 0 #ffe400,
+ 1px 1px 0 #ffe400;
+ -webkit-font-smoothing: antialiased;
+ /*^^smooths out the text so it doesnt look jagged when you make it hallow*/
   text-align: center;
 }
