@@ -60,9 +60,9 @@ class Game extends Component {
 
   render () {
     const canvasPlay =
-      this.state.loaded ? <Canvas
+      this.state.loaded && this.state.guesses > 1 ? <Canvas
           {...this.props}
-          phrase={'lol'}
+          phrase={this.state.history[this.state.guesses - 1].guess}
           requestdata={this.getGameData}
           height={'500px'}
         /> : null

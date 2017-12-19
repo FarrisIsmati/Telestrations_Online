@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes            from 'prop-types'
 import axios                from 'axios'
 
+//Imports
 import CanvasInput          from '../CanvasInput/CanvasInput'
 
 //CSS
@@ -28,7 +29,6 @@ class Canvas extends Component {
     this.onMouseLeave   = this.onMouseLeave.bind(this)
     this.redraw         = this.redraw.bind(this)
     this.onSave         = this.onSave.bind(this)
-    this.resizeCanvas   = this.resizeCanvas.bind(this)
   }
 
   // Sets up Canvas and handles drawing based on state of mouse position
@@ -75,7 +75,6 @@ class Canvas extends Component {
     }
   }
 
-  //On Mouse Click
   onMouseClick(e, canvas){
     if (this.state.paint){
       this.setState({ paint: false })
@@ -85,16 +84,8 @@ class Canvas extends Component {
     }
   }
 
-  //On Mouse Leave Stop painting
   onMouseLeave(e){
     this.setState({paint: false})
-  }
-
-  resizeCanvas() {
-    this.setState({
-      canvasWidth: this.refs.canvasHolder.offsetWidth,
-      canvasHeight: this.refs.canvasHolder.offsetHeight
-    })
   }
 
   // Save image as base64
@@ -116,8 +107,6 @@ class Canvas extends Component {
       canvasWidth: this.refs.canvasHolder.offsetWidth,
       canvasHeight: this.refs.canvasHolder.offsetHeight
     })
-
-    //window.addEventListener("resize", this.resizeCanvas)
   }
 
   componentDidUpdate() {

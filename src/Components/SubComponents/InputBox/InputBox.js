@@ -10,8 +10,7 @@ const InputBox = ({
 }) => {
   return (
     <div>
-      <input
-      guess={guess}
+      <input guess={guess} />
     </div>
   )
 }
