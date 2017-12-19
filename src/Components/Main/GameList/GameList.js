@@ -1,5 +1,6 @@
 import React, { Component }     from 'react'
 import axios                    from 'axios'
+import GameListDisplay          from '../../SubComponents/GameListDisplay/GameListDisplay.js'
 
 class GameList extends Component{
   constructor(props){
@@ -22,6 +23,10 @@ class GameList extends Component{
   render() {
    return(
      <div>
+
+       <h1>Game list</h1>
+       {GameList}
+       <GameListDisplay />
        <p onClick={this.createGame}>Create Game</p>
      </div>
    )
