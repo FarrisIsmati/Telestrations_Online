@@ -3,6 +3,16 @@ html, body {
   margin: 0;
 }
 
+h1 {
+  marign: 0;
+  font-family: 'Indie Flower', cursive;
+}
+
+p {
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+}
+
 #root {
   height: 100%;
 }

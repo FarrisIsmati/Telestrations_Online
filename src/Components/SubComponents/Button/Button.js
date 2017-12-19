@@ -10,13 +10,9 @@ class Button extends Component {
   }
 
   render() {
-    const buttonStyle = {
-      verticalAlign: "middle"
-    }
-
     return (
       <div>
-        <button className="button" onClick={this.props.buttonClick} style={buttonStyle}><span>{this.props.name}</span></button>
+        <button className="button" onClick={this.props.buttonClick} ><span>{this.props.name}</span></button>
       </div>
     )
   }
