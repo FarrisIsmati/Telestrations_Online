@@ -23,6 +23,7 @@ class GameList extends Component{
   render() {
    return(
      <div>
+
        <h1>Game list</h1>
        {GameList}
        <GameListDisplay />

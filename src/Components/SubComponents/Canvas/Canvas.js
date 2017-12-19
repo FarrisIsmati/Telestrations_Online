@@ -37,7 +37,7 @@ class Canvas extends Component {
     context.clearRect(0, 0, context.canvas.width, context.canvas.height)
     context.lineJoin = "round"
     context.lineWidth = 10
-    context.fillStyle = '#E24E24';
+    context.fillStyle = '#FF652F';
     context.fillRect(0, 0, canvas.width, canvas.height)
 
     for(let i = 0; i < this.state.clickX.length; i++) {
