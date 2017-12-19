@@ -13,7 +13,7 @@ class GuessInput extends Component {
     return (
       <div id="guess">
         <div id="input">
-          <input type="text" name="textbox" placeholder="Type your guess here!"/>
+          <input type="text" name="textbox" onChange={(e) => this.props.setguess(e)} placeholder="Guess here!"/>
         </div>
       </div>
     )

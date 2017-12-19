@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes            from 'prop-types'
 import axios                from 'axios'
-import Button               from '../Button/Button'
+
+//Imports
+import CanvasInput          from '../CanvasInput/CanvasInput'
 
 //CSS
 import                           './Canvas.css'
@@ -12,6 +14,7 @@ class Canvas extends Component {
     super(props)
 
     this.state = {
+      setPlayers: 0,
       canvasWidth: '',
       canvasHeight: '',
       clickX: [],
@@ -27,7 +30,6 @@ class Canvas extends Component {
     this.onMouseLeave   = this.onMouseLeave.bind(this)
     this.redraw         = this.redraw.bind(this)
     this.onSave         = this.onSave.bind(this)
-    this.resizeCanvas   = this.resizeCanvas.bind(this)
   }
 
   // Sets up Canvas and handles drawing based on state of mouse position
@@ -63,18 +65,17 @@ class Canvas extends Component {
 
   onMouseDown(e, canvas) {
     this.setState({ paint: true })
-    this.addClick(e.pageX - canvas.offsetLeft + 5, e.pageY - canvas.offsetTop + 4)
+    this.addClick(e.pageX - canvas.offsetLeft + 8, e.pageY - canvas.offsetTop + 8)
     this.redraw(canvas)
   }
 
   onMouseMove(e, canvas) {
     if(this.state.paint){
-      this.addClick(e.pageX - canvas.offsetLeft + 5, e.pageY - canvas.offsetTop + 4, true)
+      this.addClick(e.pageX - canvas.offsetLeft + 8, e.pageY - canvas.offsetTop + 8, true)
       this.redraw(canvas)
     }
   }
 
-  //On Mouse Click
   onMouseClick(e, canvas){
     if (this.state.paint){
       this.setState({ paint: false })
@@ -84,16 +85,8 @@ class Canvas extends Component {
     }
   }
 
-  //On Mouse Leave Stop painting
   onMouseLeave(e){
     this.setState({paint: false})
-  }
-
-  resizeCanvas() {
-    this.setState({
-      canvasWidth: this.refs.canvasHolder.offsetWidth,
-      canvasHeight: this.refs.canvasHolder.offsetHeight
-    })
   }
 
   // Save image as base64
@@ -115,8 +108,6 @@ class Canvas extends Component {
       canvasWidth: this.refs.canvasHolder.offsetWidth,
       canvasHeight: this.refs.canvasHolder.offsetHeight
     })
-
-    //window.addEventListener("resize", this.resizeCanvas)
   }
 
   componentDidUpdate() {
@@ -148,10 +139,8 @@ class Canvas extends Component {
           onMouseLeave={(e) => this.onMouseLeave()}
           width={this.state.canvasWidth} height={height}
           />
-        <div className="flex flex-column-center">
-          {children}
-          <Button onClick={this.onSave} buttonClick={this.onSave} name="Next" />
-        </div>
+
+        <CanvasInput {...this.props} children={children} save={this.onSave} />
       </div>
     )
   }

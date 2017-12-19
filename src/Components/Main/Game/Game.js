@@ -4,6 +4,7 @@ import axios                from 'axios'
 import Canvas               from '../../SubComponents/Canvas/Canvas'
 import Guess                from '../../SubComponents/Guess/Guess'
 import Button               from '../../SubComponents/Button/Button'
+import DropDown             from '../../SubComponents/DropDown/DropDown'
 
 import                           '../../../Stylesheets/CommonStyles.css'
 import                           './Game.css'
@@ -16,6 +17,7 @@ class Game extends Component {
         loaded: false
     }
 
+    this.setPlayers = this.setPlayers.bind(this)
     this.getGuesses = this.getGuesses.bind(this)
     this.startGame = this.startGame.bind(this)
     this.getGameData = this.getGameData.bind(this)
@@ -40,6 +42,17 @@ class Game extends Component {
     }
   }
 
+  setPlayers(e) {
+    axios.put(`https://project3-sjf.herokuapp.com/api/game/${this.props.match.params.gameId}`,
+      {
+        'player': e.target.value
+      })
+      .then((response) => {
+          console.log('players set')
+        })
+      .catch((err) => console.log(err))
+  }
+
   startGame() {
     this.setState({
       started: true
@@ -58,11 +71,25 @@ class Game extends Component {
   }
 
   render () {
+    const canvasPlay =
+      this.state.loaded && this.state.guesses > 1 ? <Canvas
+          {...this.props}
+          phrase={this.state.history[this.state.guesses - 1].guess}
+          requestdata={this.getGameData}
+          height={'500px'}
+          start={false}
+        /> : null
 
-    const canvasPlay = <Canvas {...this.props} requestdata={this.getGameData} height={'500px'} />
-    const canvasStart = <Canvas {...this.props} startgame={this.startGame} requestdata={this.getGameData} height={'500px'}>
-      
-    </Canvas>
+    const canvasStart = <Canvas
+      {...this.props}
+      phrase={this.state.phrase}
+      startgame={this.startGame}
+      requestdata={this.getGameData}
+      height={'500px'}
+      start={true}
+    >
+    <DropDown setplayers={(e) => this.setPlayers(e)}/>
+  </Canvas>
 
     //If the game hasn't started render canvas start otherwise render canvas play
     const canvas = this.state.guesses === 0 ? canvasStart : canvasPlay
@@ -72,7 +99,13 @@ class Game extends Component {
         {
           this.getGuesses() && this.state.loaded ?
           canvas :
-          <Guess {...this.props} requestdata={this.getGameData} />
+          null
+        }
+
+        {
+          !this.getGuesses() && this.state.loaded ?
+          <Guess {...this.props} requestdata={this.getGameData} /> :
+          null
         }
       </div>
     )

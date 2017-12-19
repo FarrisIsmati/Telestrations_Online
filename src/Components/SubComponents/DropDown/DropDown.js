@@ -6,20 +6,20 @@ import                           './DropDown.css'
 
 class DropDown extends Component {
   constructor(props) {
-    super(props);
+    super(props)
   }
 
   render() {
-
     return (
       <div>
-        <div class="dropdown">
-          <button class="dropbtn">Dropdown</button>
-            <div class="dropdown-content">
-              <a href="#">Link 1</a>
-              <a href="#">Link 2</a>
-              <a href="#">Link 3</a>
-          </div>
+        <div className="dropdown">
+            <select onChange={(e) => this.props.setplayers(e)}>
+              <option>2</option>
+              <option>4</option>
+              <option>6</option>
+              <option>8</option>
+              <option>10</option>
+            </select>
         </div>
       </div>
     )
