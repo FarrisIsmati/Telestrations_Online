@@ -15,7 +15,7 @@
   transition: color 0.3s;
 }
 
-.game-list-display-holder a:hover .drawingDiv{
+.game-list-display-holder a:hover .drawing-div{
   border-color: #C0B283;
   transition: border-color 0.3s;
 }
@@ -36,7 +36,7 @@
   color: #373737;
 }
 
-.drawingDiv {
+.drawing-div {
   overflow-x: hidden;
   overflow-y: hidden;
   width: 400px;
@@ -49,12 +49,12 @@
 .testing {
 
 }
-.historyPreview {
+.history-preview {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
 }
-.historyPreview img{
+.history-preview img{
   height: 300px;
   border: none;
 }

@@ -3,13 +3,6 @@
   height: 100%;
 }
 
-.canvas-tools-holder {
-}
-
-.canvas {
-
-}
-
-.canvas:hover{
+.canvas:hover {
   cursor: url('../Icons/circle.png'), auto;
 }

@@ -2,10 +2,8 @@ import React, { Component } from 'react'
 import PropTypes            from 'prop-types'
 import axios                from 'axios'
 
-//Imports
 import CanvasInput          from '../CanvasInput/CanvasInput'
 
-//CSS
 import                           './Canvas.css'
 import                           '../../../Stylesheets/CommonStyles.css'
 
@@ -164,6 +162,5 @@ Canvas.defaultProps = {
   borderColor: '#373737',
   backgroundColor: '#F4F4F4'
 }
-//Color Plalete
 
 export default Canvas;
