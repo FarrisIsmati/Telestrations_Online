@@ -14,7 +14,7 @@ class GameListDisplay extends Component {
             <div className="drawingDiv">
               <img className="game-drawing" src={game.history[0].drawing}/>
             </div>
-            
+
             <div className="gamehistory-link">
               <p>{game.history[0].name}</p>
               <h1>{game.phrase}</h1>

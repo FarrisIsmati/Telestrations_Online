@@ -47,15 +47,15 @@ class GameHistory extends Component{
 
   render() {
 
-    const GuessingRounds = this.state.rounds.map((round) => {
+    const GuessingRounds = this.state.rounds.map((round, index) => {
          return (
            <div>
            {round.drawing ?
-             <div className="round-drawing-container">
+             <div key={index} className="round-drawing-container">
                <img className="round-drawing" src={round.drawing}/>
                <p>Artist <span>{round.name}</span></p>
              </div>:
-             <p><span>{round.name}</span> guessed <span>{round.guess}</span></p>
+             <p key={index}><span>{round.name}</span> guessed <span>{round.guess}</span></p>
            }
            </div>
         )

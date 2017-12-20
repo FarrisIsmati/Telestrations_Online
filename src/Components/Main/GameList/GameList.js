@@ -29,13 +29,13 @@ class GameList extends Component{
 
   getGames() {
     axios.get('https://project3-sjf.herokuapp.com/api/game')
-    .then((response) => {
-      this.setState({
-        games: response.data,
-        loaded: true
+      .then((response) => {
+        this.setState({
+          games: response.data,
+          loaded: true
+        })
       })
-    })
-    .catch((err) => console.log(err))
+      .catch((err) => console.log(err))
   }
 
   componentDidMount() {
