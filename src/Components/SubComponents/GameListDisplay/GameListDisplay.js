@@ -31,14 +31,15 @@ render() {
   const Games = this.state.games.slice(0).reverse().map((game) => {
     if(game.complete) {
       return (
-      <div key={ game._id }>
+      <div className="flex flex-column-center" key={ game._id }>
         <div className="drawingDiv">
           <img className="game-drawing" src={game.history[0].drawing}/>
         </div>
 
-        <p> {game.phrase} </p>
+
         <div className="gamehistory-link">
-          <Link to={`/${game._id}/gamehistory`}>Link to Game History</Link>
+          <h1>{game.history[0].name}</h1>
+          <Link to={`/${game._id}/gamehistory`}><h1>{game.phrase}</h1></Link>
         </div>
       </div>
       )
@@ -48,7 +49,7 @@ render() {
   return(
     <div>
     {this.state.loaded ?
-      <div className="historyPreview">
+      <div className="flex historyPreview">
       {Games}
       </div>:
       <p>loading</p>

@@ -1,7 +1,5 @@
 .gamehistory-link {
-  height: 20px;
-  width: 100%;
-  margin-bottom: 20px;
+  text-align: center;
 }
 .game-drawing {
 
@@ -12,6 +10,8 @@
   width: 400px;
   height: 300px;
   margin: 30px, 0px;
+  border: solid 5px #373737;
+  border-radius: 4px;
 }
 .testing {
 
@@ -20,4 +20,7 @@
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+}
+.historyPreview img{
+  border: none;
 }
