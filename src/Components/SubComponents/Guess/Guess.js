@@ -17,7 +17,8 @@ class Guess extends Component {
       image: ''
     }
 
-    this.setInput = this.setInput.bind(this)
+    this.setName = this.setName.bind(this)
+    this.setGuess = this.setGuess.bind(this)
     this.getGameData = this.getGameData.bind(this)
     this.onSave = this.onSave.bind(this)
   }
@@ -47,9 +48,15 @@ class Guess extends Component {
       .catch((err) => console.log(err))
   }
 
-  setInput(e) {
+  setGuess(e) {
     this.setState({
       guess: e.target.value
+    })
+  }
+
+  setName(e) {
+    this.setState({
+      name: e.target.value
     })
   }
 
@@ -58,13 +65,6 @@ class Guess extends Component {
   }
 
   render() {
-    //Find height width of image and set it to that
-    const tempImgStyle = {
-      width: '100%',
-      height: '100%',
-      backgroundColor: '#E24E24'
-    }
-
     return (
       <div>
         {
@@ -72,8 +72,11 @@ class Guess extends Component {
             <div className='guess-holder flex flex-column-center'>
               <img src={this.state.history[this.state.guesses - 1].drawing}/>
               <div className="flex flex-center">
-                <p>What is this</p>
-                <GuessInput setinput={this.setInput} />
+                <div className="guess-name-input-holder">
+                  <GuessInput setinput={this.setName} />
+                </div>
+                <p>what is this</p>
+                <GuessInput setinput={this.setGuess} />
               </div>
               <Button onClick={this.onSave} buttonClick={this.onSave} name="Next" />
             </div>:
