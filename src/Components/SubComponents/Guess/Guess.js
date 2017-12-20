@@ -75,9 +75,9 @@ class Guess extends Component {
               <img src={this.state.history[this.state.guesses - 1].drawing}/>
               <div className="flex flex-center">
                 <div className="guess-name-input-holder">
-                  <GuessInput setinput={this.setName} />
+                  <GuessInput setinput={this.setName} previewText={'Hey, you'}/>
                 </div>
-                <p>what is this</p>
+                <p>what is this?</p>
                 <GuessInput setinput={this.setGuess} />
               </div>
               <Button onClick={this.onSave} buttonClick={this.onSave} name="Next" />
