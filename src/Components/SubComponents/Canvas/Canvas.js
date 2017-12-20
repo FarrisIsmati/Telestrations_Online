@@ -38,7 +38,7 @@ class Canvas extends Component {
     let context = canvas.getContext("2d")
     context.clearRect(0, 0, context.canvas.width, context.canvas.height)
     context.lineJoin = "round"
-    context.lineWidth = 8
+    context.lineWidth = 7
     context.fillStyle = '#f4f4f4';
     context.fillRect(0, 0, canvas.width, canvas.height)
 
