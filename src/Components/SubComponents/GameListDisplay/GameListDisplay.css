@@ -1,9 +1,29 @@
+.game-list-display-holder{
+  margin-bottom: 40px;
+}
+
+.game-list-display-holder a {
+  text-decoration: none;
+  color: #373737;
+  transition: color 0.2s;
+}
+
+.game-list-display-holder a:hover {
+  text-decoration: none;
+  color: #C0B283;
+  transition: color 0.3s;
+}
+
 .gamehistory-link {
   text-align: center;
 }
-.game-drawing {
 
+.gamehistory-link p{
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  color: #373737;
 }
+
 .drawingDiv {
   overflow-x: hidden;
   overflow-y: hidden;
