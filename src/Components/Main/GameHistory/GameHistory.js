@@ -35,8 +35,6 @@ class GameHistory extends Component{
             this.setState({rounds: newRoundsArray})
         }
           this.setState({loaded: true})
-          console.log(response);
-          console.log(this.state.pictures)
         })
       .catch((err) => console.log(err))
   }
@@ -52,10 +50,17 @@ class GameHistory extends Component{
            <div key={index}>
            {round.drawing ?
              <div className="round-drawing-container">
+               <p id="history-index">
+                 {
+                   index % 2 === 0 && index != 2 && index != 0 ?
+                   index - 1:
+                   index === 2 ? 2 : 1
+                 }
+               </p>
                <img className="round-drawing" src={round.drawing} alt=""/>
                <p>Artist <span>{round.name}</span></p>
              </div>:
-             <p key={index}><span>{round.name}</span> guessed <span>{round.guess}</span></p>
+               <p key={index}><span>{round.name}</span> guessed <span>{round.guess}</span></p>
            }
            </div>
         )

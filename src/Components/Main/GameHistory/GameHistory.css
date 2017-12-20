@@ -3,6 +3,11 @@
     margin-top: 50px;
 }
 
+#history-index{
+    font-size: 2.5em;
+    margin-bottom: 5px;
+}
+
 .round-drawing {
   width: 800px;
 }
