@@ -6,6 +6,7 @@ import Game from                                './Components/Main/Game/Game'
 import Header from                              './Components/Main/Header/Header'
 import GameHistory from                         './Components/Main/GameHistory/GameHistory'
 import GameList from                            './Components/Main/GameList/GameList'
+import About from                            './Components/SubComponents/About/About'
 //CSS
 import                                           './App.css'
 
@@ -17,7 +18,7 @@ class App extends Component {
            <div className='body'>
              <Switch>
               <Route path='/about' render={(props) => (
-               <p>Render about page here</p>)}/>
+               <About {...props} />)}/>
 
                <Route path='/:gameId/gamehistory'render={(props) => (
                  <GameHistory {...props} />)}/>
