@@ -8,6 +8,10 @@ h1 {
   font-family: 'Indie Flower', cursive;
   display: inline;
 }
+img {
+  border: solid 5px #373737;
+  border-radius: 4px;
+}
 
 p {
   margin: 0;
