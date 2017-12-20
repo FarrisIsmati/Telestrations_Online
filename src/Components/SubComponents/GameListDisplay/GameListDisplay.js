@@ -2,6 +2,8 @@ import React, { Component }     from 'react'
 import axios                    from 'axios'
 import { Link, Route }          from 'react-router-dom'
 
+import './GameListDisplay.css'
+
 class GameListDisplay extends Component {
   constructor() {
     super ()
@@ -16,6 +18,7 @@ class GameListDisplay extends Component {
     .then((response) => {
       this.setState({games: response.data})
       this.setState({loaded:true})
+      // console.log(response)
     })
     .catch((err) => console.log(err))
   }
@@ -27,11 +30,17 @@ componentDidMount() {
 render() {
   const Games = this.state.games.map((game) => {
     if(game.complete) {
-       return (
-         <div key={ game._id }>
-           <img src={game.history[0].drawing}/>
-           <p> {game.phrase} </p>
+      return (
+      <div key={ game._id }>
+        <div >
+          <img className="game-drawing" src={game.history[0].drawing}/>
         </div>
+
+        <p> {game.phrase} </p>
+        <div className="gamehistory-link">
+          <Link to={`/${game._id}/gamehistory`}>Link to Game History</Link>
+        </div>
+      </div>
       )
     }
   })
