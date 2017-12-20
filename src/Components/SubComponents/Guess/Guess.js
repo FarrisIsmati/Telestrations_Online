@@ -12,7 +12,7 @@ class Guess extends Component {
   constructor(props){
     super(props)
     this.state = {
-      name: '',
+      name: 'anonymous',
       guess: '',
       loaded: false,
       image: ''
@@ -68,7 +68,7 @@ class Guess extends Component {
 
   render() {
     return (
-      <div>
+      <div className="full-height">
         {
           this.state.loaded && this.state.history.length >= 1 ?
             <div className='guess-holder flex flex-column-center'>

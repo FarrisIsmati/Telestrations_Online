@@ -14,7 +14,7 @@ class Canvas extends Component {
     super(props)
 
     this.state = {
-      name: '',
+      name: 'anonymous',
       setPlayers: 0,
       clickX: [],
       clickY: [],
