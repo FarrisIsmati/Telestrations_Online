@@ -24,7 +24,6 @@ class GameList extends Component{
    return(
      <div>
 
-       <h1>Game list</h1>
        {GameList}
        <GameListDisplay />
        <p onClick={this.createGame}>Create Game</p>
