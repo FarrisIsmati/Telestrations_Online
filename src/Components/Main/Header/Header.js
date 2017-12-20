@@ -9,14 +9,14 @@ import                            './Header.css'
 class Header extends Component{
   render() {
     return(
-      <div className="header-holder">
+        <div className='header-holder'>
         <Link to='/' style={{ textDecoration: 'none' }}>
             <h1>You Suck at <span>Art</span></h1>
         </Link>
-          <Link to='/about'>
-          <h1 className='aboutPage'> About </h1>
-          </Link>
-      </div>
+        <Link to='/about' style={{ textDecoration: 'none' }}>
+        <h1 className='aboutPage'> About </h1>
+        </Link>
+        </div>
     )
    }
   }

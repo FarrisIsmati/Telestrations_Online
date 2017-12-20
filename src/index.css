@@ -13,11 +13,10 @@ p {
   font-family: 'Lato', sans-serif;
 }
 
-img {
-  border: solid 5px #373737;
-  border-radius: 4px;
-}
-
 #root {
   height: 100%;
+}
+
+.wrapper{
+display: inline-block;
 }

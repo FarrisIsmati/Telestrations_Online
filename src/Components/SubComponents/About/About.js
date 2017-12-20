@@ -13,7 +13,7 @@ class About extends Component {
 
     return (
       <div>
-        <div>
+        <div className='Rules'>
           <h2> How to play: </h2>
           <ul>
             <li>To start, click create Game.</li>
@@ -30,6 +30,7 @@ class About extends Component {
           <h2>Requirements:</h2>
           <li> Must have an even amout of players </li>
           <li> You must draw a picture to contiune on </li>
+          <li> You must guess on the picture to contiune</li>
         </div>
       </div>
     )
