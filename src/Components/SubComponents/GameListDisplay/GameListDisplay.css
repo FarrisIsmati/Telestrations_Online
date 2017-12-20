@@ -4,5 +4,20 @@
   margin-bottom: 20px;
 }
 .game-drawing {
-  width: 800px;
+
+}
+.drawingDiv {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  width: 400px;
+  height: 300px;
+  margin: 30px, 0px;
+}
+.testing {
+
+}
+.historyPreview {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
