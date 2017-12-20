@@ -11,6 +11,7 @@
 .game-list-display-holder a:hover {
   text-decoration: none;
   color: #C0B283;
+  cursor: pointer;
   transition: color 0.3s;
 }
 
