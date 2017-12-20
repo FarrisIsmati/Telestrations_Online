@@ -9,11 +9,11 @@ import                           '../../../Stylesheets/CommonStyles.css'
 class CanvasInput extends Component {
   render() {
     return (
-      <div className="flex flex-column-center">
+      <div className="flex flex-column-center canvas-input-holder">
         {this.props.children}
         <div className="flex text-holder">
-          <p><strong>Draw this</strong></p>
-          <p>{this.props.phrase}</p>
+          <p>Draw</p>
+          <h1>{this.props.phrase}</h1>
         </div>
         <Button buttonClick={this.props.save} name="Next" />
       </div>

@@ -8,7 +8,7 @@ class Header extends Component{
     return(
       <div className="header-holder">
         <Link to='/' style={{ textDecoration: 'none' }}>
-            <h1>You Suck at Art</h1>
+            <h1>You Suck at <span>Art</span></h1>
         </Link>
       </div>
     )

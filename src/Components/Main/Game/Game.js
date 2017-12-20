@@ -88,7 +88,10 @@ class Game extends Component {
       height={'400px'}
       start={true}
     >
-    <DropDown setplayers={(e) => this.setPlayers(e)}/>
+    <div className="flex">
+      <p style={{'paddingRight': '5px', 'fontSize': '1.2em'}}>Players</p>
+      <DropDown setplayers={(e) => this.setPlayers(e)}/>
+    </div>
   </Canvas>
 
     //If the game hasn't started render canvas start otherwise render canvas play

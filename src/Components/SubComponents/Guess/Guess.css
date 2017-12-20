@@ -1,4 +1,8 @@
-.guess-holder p{
+.guess-holder {
+  margin-top: 15px;
+}
+
+.guess-holder p {
   margin: 0 2px 0 2px;
   font-size: 2em;
   font-weight: 700;

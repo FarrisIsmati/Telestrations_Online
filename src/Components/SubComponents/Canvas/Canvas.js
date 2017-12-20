@@ -91,7 +91,6 @@ class Canvas extends Component {
 
   // Save image as base64
   onSave(){
-    console.log("Firing")
     let image = this.state.canvas.toDataURL()
     axios.post(`https://project3-sjf.herokuapp.com/api/game/${this.props.match.params.gameId}/history`, {
         'drawing': image
@@ -139,7 +138,6 @@ class Canvas extends Component {
           onMouseLeave={(e) => this.onMouseLeave()}
           width={this.state.canvasWidth} height={height}
           />
-
         <CanvasInput {...this.props} children={children} save={this.onSave} />
       </div>
     )
@@ -162,5 +160,5 @@ Canvas.defaultProps = {
   backgroundColor: '#F4F4F4'
 }
 //Color Plalete
-//Papaya #E24E24 Mustartd #E98000 Blush #EB6E80 Aqua #008F95
+
 export default Canvas;

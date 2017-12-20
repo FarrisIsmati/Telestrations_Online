@@ -69,7 +69,6 @@ class Guess extends Component {
       <div>
         {
           this.state.loaded && this.state.history.length >= 1 ?
-          <div>
             <div className='guess-holder flex flex-column-center'>
               <img src={this.state.history[this.state.guesses - 1].drawing}/>
               <div className="flex flex-center">
@@ -77,8 +76,7 @@ class Guess extends Component {
                 <GuessInput setguess={this.setGuess} />
               </div>
               <Button onClick={this.onSave} buttonClick={this.onSave} name="Next" />
-            </div>
-          </div>:
+            </div>:
           <SwitchPrompt />
         }
       </div>
