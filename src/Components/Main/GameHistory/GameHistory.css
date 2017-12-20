@@ -3,7 +3,20 @@
 }
 .round-drawing-container {
   text-align: center;
+  margin-top: 70px;
 }
-.gameHistoryPage {
+.game-history-page {
   text-align: center;
+}
+
+.game-history-page p {
+  font-size: 2em;
+  font-weight: 700;
+}
+
+.game-history-page span {
+  margin: 0 3px 0 3px;
+  font-size: 1.2em;
+  color: #C0B283;
+  font-family: 'Indie Flower', cursive;
 }
