@@ -20,6 +20,14 @@
   color: #C0B283;
 }
 
-.aboutPage {
+.about-page {
   float: right;
+  color: #373737;
+  trainsition: color, .2s;
+}
+
+.about-page:hover {
+  color: #C0B283;
+  cursor: pointer;
+  trainsition: color, .3s;
 }
