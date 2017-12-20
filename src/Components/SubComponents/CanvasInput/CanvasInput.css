@@ -1,3 +1,14 @@
-.text-holder p{
-  margin: 10px 2px 0 2px;
+.canvas-input-holder {
+  margin-top: 15px;
+}
+
+.text-holder p {
+  font-weight: 700;
+  font-size: 2em;
+}
+
+.text-holder h1 {
+  color: #C0B283;
+  font-size: 2.2em;
+  margin-left: 10px;
 }

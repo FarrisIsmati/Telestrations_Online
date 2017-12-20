@@ -76,7 +76,7 @@ class Game extends Component {
           {...this.props}
           phrase={this.state.history[this.state.guesses - 1].guess}
           requestdata={this.getGameData}
-          height={'500px'}
+          height={'400px'}
           start={false}
         /> : null
 
@@ -85,10 +85,13 @@ class Game extends Component {
       phrase={this.state.phrase}
       startgame={this.startGame}
       requestdata={this.getGameData}
-      height={'500px'}
+      height={'400px'}
       start={true}
     >
-    <DropDown setplayers={(e) => this.setPlayers(e)}/>
+    <div className="flex">
+      <p style={{'paddingRight': '5px', 'fontSize': '1.2em'}}>Players</p>
+      <DropDown setplayers={(e) => this.setPlayers(e)}/>
+    </div>
   </Canvas>
 
     //If the game hasn't started render canvas start otherwise render canvas play

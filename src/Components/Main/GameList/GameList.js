@@ -23,10 +23,9 @@ class GameList extends Component{
   render() {
    return(
      <div>
-
        {GameList}
        <GameListDisplay />
-       <p onClick={this.createGame}>Create Game</p>
+       <button className="button" onClick={this.createGame}><span>Create Game</span></button>
      </div>
    )
   }
