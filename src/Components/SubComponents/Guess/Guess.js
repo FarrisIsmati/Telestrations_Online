@@ -30,7 +30,7 @@ class Guess extends Component {
           setTimeout(function(){
             this.setState({...response.data})
             this.setState({loaded: true})
-          }.bind(this), 3000)
+          }.bind(this), 200000)
 
         })
       .catch((err) => console.log(err))
