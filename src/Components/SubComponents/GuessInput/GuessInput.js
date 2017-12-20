@@ -12,12 +12,20 @@ class GuessInput extends Component {
   }
 
   render() {
+    const {
+      previewText
+    } = this.props
+
     return (
       <div className="input-holder">
-        <input type="text" name="textbox" onChange={(e) => this.props.setinput(e)} placeholder=""/>
+        <input type="text" name="textbox" onChange={(e) => this.props.setinput(e)} placeholder={previewText}/>
       </div>
     )
   }
+}
+
+GuessInput.propTypes = {
+  previewText: PropTypes.string
 }
 
 export default GuessInput

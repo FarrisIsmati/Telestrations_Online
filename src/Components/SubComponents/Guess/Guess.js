@@ -12,7 +12,7 @@ class Guess extends Component {
   constructor(props){
     super(props)
     this.state = {
-      name: '',
+      name: 'anonymous',
       guess: '',
       loaded: false,
       image: ''
@@ -30,7 +30,7 @@ class Guess extends Component {
           setTimeout(function(){
             this.setState({...response.data})
             this.setState({loaded: true})
-          }.bind(this), 200000)
+          }.bind(this), 1200)
 
         })
       .catch((err) => console.log(err))
@@ -68,16 +68,16 @@ class Guess extends Component {
 
   render() {
     return (
-      <div>
+      <div className="full-height">
         {
           this.state.loaded && this.state.history.length >= 1 ?
             <div className='guess-holder flex flex-column-center'>
               <img src={this.state.history[this.state.guesses - 1].drawing}/>
               <div className="flex flex-center">
                 <div className="guess-name-input-holder">
-                  <GuessInput setinput={this.setName} />
+                  <GuessInput setinput={this.setName} previewText={'Hey, you'}/>
                 </div>
-                <p>what is this</p>
+                <p>what is this?</p>
                 <GuessInput setinput={this.setGuess} />
               </div>
               <Button onClick={this.onSave} buttonClick={this.onSave} name="Next" />
