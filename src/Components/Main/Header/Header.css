@@ -1,5 +1,7 @@
 .header-holder {
-  height: 10%;
+  height: 12%;
+  background-color: #373737;
+  padding: 0 2.618% 0 2.618%;
 }
 
 .title {
@@ -7,13 +9,19 @@
 }
 
 .header-holder a {
-  color: black;
+  color: #373737;
   text-decoration: none;
 }
 
 .header-holder h1 {
-  font-size: 3em;
+  font-size: 4em;
+  color: #F4F4F4;
+  transition: color 0.2s;
+}
 
+.header-holder h1:hover {
+  color: #C0B283;
+  transition: color 0.3s;
 }
 
 .header-holder span {
@@ -22,7 +30,7 @@
 
 .about-page {
   float: right;
-  color: #373737;
+  color: #F4F4F4;
   trainsition: color, .2s;
 }
 
