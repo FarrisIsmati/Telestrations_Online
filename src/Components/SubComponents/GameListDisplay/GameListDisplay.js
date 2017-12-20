@@ -32,7 +32,7 @@ render() {
     if(game.complete) {
       return (
       <div key={ game._id }>
-        <div >
+        <div className="drawingDiv">
           <img className="game-drawing" src={game.history[0].drawing}/>
         </div>
 
@@ -48,7 +48,9 @@ render() {
   return(
     <div>
     {this.state.loaded ?
-      <p>{Games}</p>:
+      <div className="historyPreview">
+      {Games}
+      </div>:
       <p>loading</p>
     }
     </div>
