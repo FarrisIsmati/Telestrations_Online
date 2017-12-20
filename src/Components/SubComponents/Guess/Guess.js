@@ -72,7 +72,7 @@ class Guess extends Component {
         {
           this.state.loaded && this.state.history.length >= 1 ?
             <div className='guess-holder flex flex-column-center'>
-              <img src={this.state.history[this.state.guesses - 1].drawing}/>
+              <img src={this.state.history[this.state.guesses - 1].drawing} alt=""/>
               <div className="flex flex-center">
                 <div className="guess-name-input-holder">
                   <GuessInput setinput={this.setName} previewText={'Hey, you'}/>

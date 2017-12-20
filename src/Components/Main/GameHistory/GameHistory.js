@@ -52,7 +52,7 @@ class GameHistory extends Component{
            <div>
            {round.drawing ?
              <div key={index} className="round-drawing-container">
-               <img className="round-drawing" src={round.drawing}/>
+               <img className="round-drawing" src={round.drawing} alt=""/>
                <p>Artist <span>{round.name}</span></p>
              </div>:
              <p key={index}><span>{round.name}</span> guessed <span>{round.guess}</span></p>
