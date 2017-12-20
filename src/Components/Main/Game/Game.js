@@ -76,7 +76,7 @@ class Game extends Component {
           {...this.props}
           phrase={this.state.history[this.state.guesses - 1].guess}
           requestdata={this.getGameData}
-          height={'400px'}
+          height={'350px'}
           start={false}
         /> : null
 
@@ -85,7 +85,7 @@ class Game extends Component {
       phrase={this.state.phrase}
       startgame={this.startGame}
       requestdata={this.getGameData}
-      height={'400px'}
+      height={'350px'}
       start={true}
     >
     <div className="flex">

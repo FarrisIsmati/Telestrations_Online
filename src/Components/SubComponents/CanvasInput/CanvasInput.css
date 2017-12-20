@@ -2,6 +2,10 @@
   margin-top: 15px;
 }
 
+.canvas-input-holder .input-holder{
+  width: 30%;
+}
+
 .text-holder p {
   font-weight: 700;
   font-size: 2em;

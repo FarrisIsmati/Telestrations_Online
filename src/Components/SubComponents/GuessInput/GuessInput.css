@@ -1,14 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
-@import url('https://fonts.googleapis.com/css?family=Andada|Permanent+Marker|Raleway:300');
-* {
- box-sizing: border-box;
-}
-
-input {
- font-family: 'Indie Flower', cursive;
-}
-
-#guess input {
+.input-holder input{
+  font-family: 'Indie Flower', cursive;
   border: 0;
   width: 100%;
   font-size: 2em;

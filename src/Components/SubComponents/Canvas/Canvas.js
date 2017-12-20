@@ -14,6 +14,7 @@ class Canvas extends Component {
     super(props)
 
     this.state = {
+      name: '',
       setPlayers: 0,
       canvasWidth: '',
       canvasHeight: '',
@@ -24,6 +25,7 @@ class Canvas extends Component {
       paint: false
     }
 
+    this.setInput       = this.setInput.bind(this)
     this.onMouseDown    = this.onMouseDown.bind(this)
     this.addClick       = this.addClick.bind(this)
     this.onMouseMove    = this.onMouseMove.bind(this)
@@ -93,7 +95,8 @@ class Canvas extends Component {
   onSave(){
     let image = this.state.canvas.toDataURL()
     axios.post(`https://project3-sjf.herokuapp.com/api/game/${this.props.match.params.gameId}/history`, {
-        'drawing': image
+        'drawing': image,
+        'name': this.state.name
       })
       .then((response) => {
         this.props.requestdata()
@@ -101,10 +104,14 @@ class Canvas extends Component {
       .catch((err) => console.log(err))
   }
 
+  setInput(e) {
+    this.setState({name: e.target.value})
+  }
+
   componentDidMount() {
     this.setState({
       canvas: this.refs.canvas,
-      canvasWidth: this.refs.canvasHolder.offsetWidth,
+      canvasWidth: '100px',
       canvasHeight: this.refs.canvasHolder.offsetHeight
     })
   }
@@ -116,6 +123,7 @@ class Canvas extends Component {
   render() {
     const {
       height,
+      width,
       borderWidth,
       borderRadius,
       borderColor,
@@ -130,15 +138,14 @@ class Canvas extends Component {
     }
 
     return (
-      <div className="flex flex-column canvas-holder" ref="canvasHolder">
+      <div className="flex flex-column-center canvas-holder" ref="canvasHolder">
         <canvas className="canvas" ref='canvas' style={canvasStyle}
           onMouseDown={(e) => this.onMouseDown(e, e.target)}
           onMouseMove={(e) => this.onMouseMove(e, e.target)}
           onClick={(e) => this.onMouseClick(e, e.target)}
           onMouseLeave={(e) => this.onMouseLeave()}
-          width={this.state.canvasWidth} height={height}
-          />
-        <CanvasInput {...this.props} children={children} save={this.onSave} />
+          height={height} width={width}/>
+        <CanvasInput {...this.props} setinput={this.setInput} children={children} save={this.onSave} />
       </div>
     )
   }
@@ -154,6 +161,8 @@ Canvas.propTypes = {
 }
 
 Canvas.defaultProps = {
+  height: '350px',
+  width: '700px',
   borderWidth: '5px',
   borderRadius: '5px',
   borderColor: '#373737',

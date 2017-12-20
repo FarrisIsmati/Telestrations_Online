@@ -17,7 +17,7 @@ class Guess extends Component {
       image: ''
     }
 
-    this.setGuess = this.setGuess.bind(this)
+    this.setInput = this.setInput.bind(this)
     this.getGameData = this.getGameData.bind(this)
     this.onSave = this.onSave.bind(this)
   }
@@ -47,7 +47,7 @@ class Guess extends Component {
       .catch((err) => console.log(err))
   }
 
-  setGuess(e) {
+  setInput(e) {
     this.setState({
       guess: e.target.value
     })
@@ -73,7 +73,7 @@ class Guess extends Component {
               <img src={this.state.history[this.state.guesses - 1].drawing}/>
               <div className="flex flex-center">
                 <p>What is this</p>
-                <GuessInput setguess={this.setGuess} />
+                <GuessInput setinput={this.setInput} />
               </div>
               <Button onClick={this.onSave} buttonClick={this.onSave} name="Next" />
             </div>:
