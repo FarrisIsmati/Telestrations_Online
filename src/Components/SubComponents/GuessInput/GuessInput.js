@@ -7,14 +7,14 @@ import                           './GuessInput.css'
 class GuessInput extends Component {
   constructor(props) {
     super(props);
+
+    console.log(this.props)
   }
 
   render() {
     return (
-      <div id="guess">
-        <div id="input">
-          <input type="text" name="textbox" onChange={(e) => this.props.setguess(e)} placeholder=""/>
-        </div>
+      <div className="input-holder">
+        <input type="text" name="textbox" onChange={(e) => this.props.setinput(e)} placeholder=""/>
       </div>
     )
   }

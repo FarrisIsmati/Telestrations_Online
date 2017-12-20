@@ -12,11 +12,13 @@ class Guess extends Component {
   constructor(props){
     super(props)
     this.state = {
+      name: '',
       guess: '',
       loaded: false,
       image: ''
     }
 
+    this.setName = this.setName.bind(this)
     this.setGuess = this.setGuess.bind(this)
     this.getGameData = this.getGameData.bind(this)
     this.onSave = this.onSave.bind(this)
@@ -28,7 +30,7 @@ class Guess extends Component {
           setTimeout(function(){
             this.setState({...response.data})
             this.setState({loaded: true})
-          }.bind(this), 3000)
+          }.bind(this), 200000)
 
         })
       .catch((err) => console.log(err))
@@ -37,7 +39,8 @@ class Guess extends Component {
   onSave() {
     console.log(this.state.guess)
     axios.post(`https://project3-sjf.herokuapp.com/api/game/${this.props.match.params.gameId}/history`, {
-        'guess': this.state.guess
+        'guess': this.state.guess,
+        'name': this.state.name
       })
       .then((response) => {
         console.log('run request')
@@ -53,18 +56,17 @@ class Guess extends Component {
     })
   }
 
+  setName(e) {
+    this.setState({
+      name: e.target.value
+    })
+  }
+
   componentDidMount() {
     this.getGameData()
   }
 
   render() {
-    //Find height width of image and set it to that
-    const tempImgStyle = {
-      width: '100%',
-      height: '100%',
-      backgroundColor: '#E24E24'
-    }
-
     return (
       <div>
         {
@@ -72,8 +74,11 @@ class Guess extends Component {
             <div className='guess-holder flex flex-column-center'>
               <img src={this.state.history[this.state.guesses - 1].drawing}/>
               <div className="flex flex-center">
-                <p>What is this</p>
-                <GuessInput setguess={this.setGuess} />
+                <div className="guess-name-input-holder">
+                  <GuessInput setinput={this.setName} />
+                </div>
+                <p>what is this</p>
+                <GuessInput setinput={this.setGuess} />
               </div>
               <Button onClick={this.onSave} buttonClick={this.onSave} name="Next" />
             </div>:
