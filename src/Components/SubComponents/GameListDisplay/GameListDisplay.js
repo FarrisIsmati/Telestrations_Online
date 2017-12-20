@@ -10,8 +10,8 @@ class GameListDisplay extends Component {
         return (
         <div className="flex flex-column-center game-list-display-holder" key={ game._id }>
           <Link to={`/${game._id}/gamehistory`}>
-            <div className="drawing-div">
-              <img className="game-drawing" src={game.history[0].drawing}/>
+            <div className="drawingDiv">
+              <img className="game-drawing" src={game.history[0].drawing} alt=""/>
             </div>
 
             <div className="gamehistory-link">
