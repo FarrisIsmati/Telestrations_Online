@@ -10,8 +10,8 @@ class SwitchPrompt extends Component {
 
   render() {
     return (
-      <div class="loader-pencil-content">
-        <p>Switch Players</p>
+      <div class="loader-pencil-content flex flex-column-center full-height">
+        <h1>Switch Players</h1>
         <div class="btn">
           <svg id="loader-pencil" xmlns="http://www.w3.org/2000/svg" width="667" height="182" viewBox="0 0 677.34762 182.15429">
             <g>

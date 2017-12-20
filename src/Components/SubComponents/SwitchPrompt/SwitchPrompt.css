@@ -6,6 +6,11 @@
   justify-content: center;
 }
 
+.loader-pencil-content h1{
+  color: #C0B283;
+  font-size: 5em;
+}
+
 .btn {
   align-items: center;
   border-radius: 4px;
