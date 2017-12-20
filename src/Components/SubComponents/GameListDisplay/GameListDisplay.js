@@ -28,7 +28,7 @@ componentDidMount() {
 }
 
 render() {
-  const Games = this.state.games.map((game) => {
+  const Games = this.state.games.slice(0).reverse().map((game) => {
     if(game.complete) {
       return (
       <div key={ game._id }>
