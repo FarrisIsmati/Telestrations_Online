@@ -14,6 +14,11 @@
   transition: color 0.3s;
 }
 
+.game-list-display-holder a:hover .drawingDiv{
+  border-color: #C0B283;
+  transition: border-color 0.3s;
+}
+
 .gamehistory-link {
   text-align: center;
 }
@@ -23,8 +28,10 @@
 }
 
 .gamehistory-link p{
+  margin-top: 5px;
   font-family: 'Lato', sans-serif;
   font-weight: 700;
+  font-size: 1.2  em;
   color: #373737;
 }
 
@@ -36,6 +43,7 @@
   margin: 30px, 0px;
   border: solid 5px #373737;
   border-radius: 4px;
+  transition: color 0.2s;
 }
 .testing {
 
@@ -46,5 +54,6 @@
   flex-wrap: wrap;
 }
 .historyPreview img{
+  height: 300px;
   border: none;
 }

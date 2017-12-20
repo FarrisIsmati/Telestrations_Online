@@ -53,21 +53,22 @@ class GameHistory extends Component{
            {round.drawing ?
              <div className="round-drawing-container">
                <img className="round-drawing" src={round.drawing}/>
-               <h1>Drawn By {round.name}</h1>
+               <p>Artist <span>{round.name}</span></p>
              </div>:
-             <h1>{round.name} guessed {round.guess}</h1>
+             <p><span>{round.name}</span> guessed <span>{round.guess}</span></p>
            }
            </div>
         )
     })
 
     return(
-      <div className="gameHistoryPage">
+      <div className="game-history-page">
       {this.state.loaded ?
         <div>
-        <h1>Starting phrase was "{this.state.phrase}"</h1>
+        <p>Original phrase <span>"{this.state.phrase}"</span></p>
         {GuessingRounds}
-        </div> : <p>Loading</p>
+        </div> :
+        null
       }
       </div>
     )
