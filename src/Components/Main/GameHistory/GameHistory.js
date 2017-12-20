@@ -64,8 +64,8 @@ class GameHistory extends Component{
     return(
       <div className="game-history-page">
       {this.state.loaded ?
-        <div>
-        <p>Original phrase <span>"{this.state.phrase}"</span></p>
+        <div >
+        <p id="game-history-page-title">Original phrase <span>"{this.state.phrase}"</span></p>
         {GuessingRounds}
         </div> :
         null

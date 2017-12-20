@@ -1,12 +1,11 @@
 import React, { Component }     from 'react'
-import axios                    from 'axios'
-import { Link, Route }          from 'react-router-dom'
+import { Link }          from 'react-router-dom'
 
 import                                './GameListDisplay.css'
 
 class GameListDisplay extends Component {
   render() {
-    const Games = this.props.games.slice(0).reverse().map((game) => {
+    const Games = this.props.games.slice(0).reverse().map(function(game) {
       if(game.complete) {
         return (
         <div className="flex flex-column-center game-list-display-holder" key={ game._id }>
@@ -26,12 +25,11 @@ class GameListDisplay extends Component {
     })
 
     return(
-      <div className="flex historyPreview">
+      <div className="flex history-preview">
         {Games}
       </div>
     )
   }
 }
-
 
 export default GameListDisplay
