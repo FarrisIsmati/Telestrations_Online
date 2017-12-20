@@ -8,6 +8,6 @@
   font-weight: 700;
 }
 
-.guess-name-input-holder input {
-  width: 30%;
+.guess-name-input-holder {
+  width: 25%;
 }

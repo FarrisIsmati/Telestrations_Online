@@ -16,8 +16,6 @@ class Canvas extends Component {
     this.state = {
       name: '',
       setPlayers: 0,
-      canvasWidth: '',
-      canvasHeight: '',
       clickX: [],
       clickY: [],
       clickDrag: [],
@@ -110,9 +108,7 @@ class Canvas extends Component {
 
   componentDidMount() {
     this.setState({
-      canvas: this.refs.canvas,
-      canvasWidth: '100px',
-      canvasHeight: this.refs.canvasHolder.offsetHeight
+      canvas: this.refs.canvas
     })
   }
 

@@ -12,6 +12,7 @@ class Guess extends Component {
   constructor(props){
     super(props)
     this.state = {
+      name: '',
       guess: '',
       loaded: false,
       image: ''
@@ -38,7 +39,8 @@ class Guess extends Component {
   onSave() {
     console.log(this.state.guess)
     axios.post(`https://project3-sjf.herokuapp.com/api/game/${this.props.match.params.gameId}/history`, {
-        'guess': this.state.guess
+        'guess': this.state.guess,
+        'name': this.state.name
       })
       .then((response) => {
         console.log('run request')
