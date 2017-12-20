@@ -20,12 +20,15 @@ class GameHistory extends Component{
       .then((response) => {
         let history = response.data.history
         for (let i = 0; i < history.length; i++) {
-          let picture = history[i].drawing
-          if (picture !== undefined) {
-            let comment = history[i+1].guess
+          let drawing = history[i].drawing
+          let name = history[i].name
+          if (drawing !== undefined) {
+            let guess = history[i+1].guess
+            let name = history[i+1].name
             let round = {
-              picture: picture,
-              comment: comment
+              drawing: drawing,
+              guess: guess,
+              name: name
             }
             let newRoundsArray = this.state.rounds
             newRoundsArray.push(round)
@@ -49,15 +52,16 @@ class GameHistory extends Component{
          return (
            <div>
              <div className="round-drawing-container">
-               <img className="round-drawing" src={round.picture}/>
+               <img className="round-drawing" src={round.drawing}/>
+               <h1>Drawn By {round.name}</h1>
              </div>
-             <p>{round.comment}</p>
+             <h1>{round.name} guessed {round.guess}</h1>
            </div>
         )
     })
 
     return(
-      <div>
+      <div className="gameHistoryPage">
       <h1>Game history</h1>
       {this.state.loaded ?
         <div>{GuessingRounds}</div> : <p>Loading</p>
