@@ -3,7 +3,6 @@ import axios                from 'axios'
 
 import Canvas               from '../../SubComponents/Canvas/Canvas'
 import Guess                from '../../SubComponents/Guess/Guess'
-import Button               from '../../SubComponents/Button/Button'
 import DropDown             from '../../SubComponents/DropDown/DropDown'
 
 import                           '../../../Stylesheets/CommonStyles.css'
@@ -65,7 +64,6 @@ class Game extends Component {
 
   componentDidUpdate() {
     if (this.state.complete){
-      //REDIRECT TO GAME HISTORY ROUTE
       this.props.history.push(`/${this.props.match.params.gameId}/gamehistory`)
     }
   }

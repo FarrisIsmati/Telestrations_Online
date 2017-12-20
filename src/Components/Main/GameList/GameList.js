@@ -42,10 +42,6 @@ class GameList extends Component{
     this.getGames()
   }
 
-  componentDidUpdate() {
-    this.getGames()
-  }
-
   render() {
    return(
      <div>

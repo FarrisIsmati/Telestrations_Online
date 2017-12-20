@@ -49,9 +49,9 @@ class GameHistory extends Component{
 
     const GuessingRounds = this.state.rounds.map((round, index) => {
          return (
-           <div>
+           <div key={index}>
            {round.drawing ?
-             <div key={index} className="round-drawing-container">
+             <div className="round-drawing-container">
                <img className="round-drawing" src={round.drawing} alt=""/>
                <p>Artist <span>{round.name}</span></p>
              </div>:
@@ -64,8 +64,8 @@ class GameHistory extends Component{
     return(
       <div className="game-history-page">
       {this.state.loaded ?
-        <div>
-        <p>Original phrase <span>"{this.state.phrase}"</span></p>
+        <div >
+        <p id="game-history-page-title">Original phrase <span>"{this.state.phrase}"</span></p>
         {GuessingRounds}
         </div> :
         null

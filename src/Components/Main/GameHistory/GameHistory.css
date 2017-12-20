@@ -1,11 +1,17 @@
+#game-history-page-title{
+    font-size: 2.5em;
+    margin-top: 50px;
+}
+
 .round-drawing {
   width: 800px;
 }
 .round-drawing-container {
   text-align: center;
-  margin-top: 70px;
+  margin-top: 50px;
 }
 .game-history-page {
+  margin-bottom: 50px;
   text-align: center;
 }
 

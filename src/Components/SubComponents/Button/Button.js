@@ -1,21 +1,17 @@
-import React, { Component } from 'react'
+import React                from 'react'
 import PropTypes            from 'prop-types'
-import axios                from 'axios'
 
 import                           './Button.css'
 
-class Button extends Component {
-  constructor(props) {
-    super(props);
-  }
+const Button= ({ buttonClick, name }) => (
+  <div>
+    <button className="button" onClick={buttonClick} ><span>{name}</span></button>
+  </div>
+)
 
-  render() {
-    return (
-      <div>
-        <button className="button" onClick={this.props.buttonClick} ><span>{this.props.name}</span></button>
-      </div>
-    )
-  }
+Button.propTypes = {
+  buttonClick: PropTypes.func,
+  name: PropTypes.string,
 }
 
 export default Button
