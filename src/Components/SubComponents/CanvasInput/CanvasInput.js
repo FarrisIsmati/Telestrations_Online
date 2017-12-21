@@ -13,7 +13,7 @@ class CanvasInput extends Component {
       <div className="flex flex-column-center canvas-input-holder">
         {this.props.children}
         <div className="flex flex-center text-holder">
-          <GuessInput setinput={this.props.setinput} previewText={'Hey, you'}/>
+          <GuessInput setinput={this.props.setinput} previewText={'Your name here'}/>
           <p>draw</p>
           <h1>{this.props.phrase}</h1>
         </div>
