@@ -21,7 +21,13 @@ Services (job queues, cache servers, search engines, etc.)
 `` deployed on surge ``
 
 installing instructions
-```$ git clone git@github.com:FarrisIsmati/telestrations_online.git
+``$ git clone git@github.com:FarrisIsmati/telestrations_online.git
 cd telestrations_online
 npm install
-npm start```
+npm start``
+
+
+
+*bibliography*
+- used this code for our loading screen -
+https://codepen.io/elhombretecla/pen/wGpLQy
