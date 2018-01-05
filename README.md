@@ -1,15 +1,12 @@
+Game is now called You Suck at Art
+
+A General Assembly Group project built using ReactJS, Axios, NodeJS, ExpressJS, MongoDB. This is the front-end code deployed on surge. This code references a Heroku/MLab Backend built using NodeJS and MongoDB.
+
 How we split up the work:
 
 `` farris - in charge of main front end components and the cavas.
    jack - in charge of SubComponents, css, and routing
    steven - in charge of backend, helping with components and debugging ``
-
-Technologies used-
-``react
-axios
-react-router-dom
-prop-types ```
-
 
 Database creation
 `` created database in mongoose
@@ -25,8 +22,6 @@ installing instructions
 cd telestrations_online
 npm install
 npm start``
-
-
 
 *bibliography*
 - used this code for our loading screen -
