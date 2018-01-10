@@ -14,6 +14,8 @@ class App extends Component {
   render() {
     return (
        <div className="app-container">
+            // Consider looking into BEM as a naming convention for your CSS. It works
+            // very well with components: https://css-tricks.com/bem-101/
            <Header />
            <div className='body'>
              <Switch>

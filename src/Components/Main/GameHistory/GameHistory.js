@@ -33,6 +33,9 @@ class GameHistory extends Component{
             let newRoundsArray = this.state.rounds
             newRoundsArray.push(round)
             this.setState({rounds: newRoundsArray})
+            // ^ I think you can do this setState once outside of the `for` loop once the newRoundsArray
+            // has been populated. You could similarily combine the other two setStates (phrase, loaded)
+            // together with this setState.
         }
           this.setState({loaded: true})
         })
@@ -68,13 +71,14 @@ class GameHistory extends Component{
 
     return(
       <div className="game-history-page">
-      {this.state.loaded ?
+      {
+        this.state.loaded &&
         <div >
-        <p id="game-history-page-title">Original phrase <span>"{this.state.phrase}"</span></p>
-        {GuessingRounds}
-        </div> :
-        null
+          <p id="game-history-page-title">Original phrase <span>"{this.state.phrase}"</span></p>
+          {GuessingRounds}
+        </div>
       }
+      // ^ You can use && to mirror a simple `if` statement if there is no `else` rendering
       </div>
     )
    }
