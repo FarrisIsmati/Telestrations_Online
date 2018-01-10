@@ -11,6 +11,7 @@ class GameListDisplay extends Component {
         <div className="flex flex-column-center game-list-display-holder" key={ game._id }>
           <Link to={`/${game._id}/gamehistory`}>
             <div className="drawingDiv">
+            // ^ use spine-casing or snake_casing for classNames
               <img className="game-drawing" src={game.history[0].drawing} alt=""/>
             </div>
 

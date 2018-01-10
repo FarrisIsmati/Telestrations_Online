@@ -25,8 +25,8 @@ class Game extends Component {
   getGameData() {
     axios.get(`https://project3-sjf.herokuapp.com/api/game/${this.props.match.params.gameId}`)
       .then((response) => {
-          this.setState({...response.data})
-          this.setState({loaded: true})
+          this.setState({...response.data, loaded: true})
+          // ^ combine these two setStates into one
         })
       .catch((err) => console.log(err))
   }

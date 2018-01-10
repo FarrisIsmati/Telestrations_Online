@@ -8,6 +8,8 @@ class Header extends Component{
     return(
         <div className='flex flex-space-around header-holder'>
           <Link to='/' style={{ textDecoration: 'none' }}>
+          // While correctly done, I would recommend either always using external CSS stylesheets (classNames)
+          // or always using inline styles for static CSS styling for consistency (dynamic styling would be ok)
             <h1>You Suck at <span>Art</span></h1>
           </Link>
           <Link to='/about' style={{ textDecoration: 'none' }}>
