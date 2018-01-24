@@ -16,11 +16,14 @@ https://project3-sjf.herokuapp.com/api/game ``
 Services (job queues, cache servers, search engines, etc.)
 `` deployed on surge ``
 
-installing instructions
-``$ git clone git@github.com:FarrisIsmati/telestrations_online.git
+# Installation Instructions
+
+```
+$ git clone git@github.com:FarrisIsmati/You-Suck-at-Art-Front-End.git
 cd telestrations_online
 npm install
-npm start``
+npm start
+```
 
 *bibliography*
 - used this code for our loading screen -
