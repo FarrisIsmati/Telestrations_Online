@@ -5,11 +5,14 @@ A General Assembly Group project built using ReactJS, Canvas, Axios, NodeJS, Exp
 How we split up the work:
 
 Farris - Data Modeling, React Components, & Canvas
+
 Jack - React Components, CSS, & Routing
+
 Steven - Api & React Components
 
 # Backend deployed on Heroku
 https://project3-sjf.herokuapp.com/api/game 
+
 https://github.com/StevenC53/You-Suck-at-Art-Back-End
 
 # Installation Instructions
