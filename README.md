@@ -1,3 +1,5 @@
+# [Live Demo](http://yousuckatart.surge.sh/)
+
 # You Suck at Art
 
 A General Assembly Group project built using ReactJS, Canvas, Axios, NodeJS, ExpressJS, & MongoDB. This is the front-end code deployed on surge. This code references a Heroku/MLab Backend built using NodeJS and MongoDB.
