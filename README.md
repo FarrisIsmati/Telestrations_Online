@@ -4,17 +4,13 @@ A General Assembly Group project built using ReactJS, Canvas, Axios, NodeJS, Exp
 
 How we split up the work:
 
-`` farris - in charge of main front end components and the cavas.
-   jack - in charge of SubComponents, css, and routing
-   steven - in charge of backend, helping with components and debugging ``
+Farris - Data Modeling, React Components, & Canvas
+Jack - React Components, CSS, & Routing
+Steven - Api & React Components
 
-Database creation
-`` created database in mongoose
-deployed to heroku
-https://project3-sjf.herokuapp.com/api/game ``
-
-Services (job queues, cache servers, search engines, etc.)
-`` deployed on surge ``
+# Backend deployed on Heroku
+https://project3-sjf.herokuapp.com/api/game 
+https://github.com/StevenC53/You-Suck-at-Art-Back-End
 
 # Installation Instructions
 
