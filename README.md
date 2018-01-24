@@ -2,7 +2,7 @@
 
 A General Assembly Group project built using ReactJS, Canvas, Axios, NodeJS, ExpressJS, & MongoDB. This is the front-end code deployed on surge. This code references a Heroku/MLab Backend built using NodeJS and MongoDB.
 
-How we split up the work:
+Group assignments
 
 Farris - Data Modeling, React Components, & Canvas
 
@@ -24,6 +24,6 @@ npm install
 npm start
 ```
 
-*bibliography*
+# *bibliography*
 - used this code for our loading screen -
 https://codepen.io/elhombretecla/pen/wGpLQy
