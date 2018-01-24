@@ -1,6 +1,6 @@
-Game is now called You Suck at Art
+# You Suck at Art
 
-A General Assembly Group project built using ReactJS, Axios, NodeJS, ExpressJS, MongoDB. This is the front-end code deployed on surge. This code references a Heroku/MLab Backend built using NodeJS and MongoDB.
+A General Assembly Group project built using ReactJS, Canvas, Axios, NodeJS, ExpressJS, & MongoDB. This is the front-end code deployed on surge. This code references a Heroku/MLab Backend built using NodeJS and MongoDB.
 
 How we split up the work:
 
@@ -12,7 +12,6 @@ Database creation
 `` created database in mongoose
 deployed to heroku
 https://project3-sjf.herokuapp.com/api/game ``
-
 
 Services (job queues, cache servers, search engines, etc.)
 `` deployed on surge ``
